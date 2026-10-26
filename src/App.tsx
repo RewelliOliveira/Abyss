@@ -3,12 +3,14 @@ import { Hero } from '@/components/sections/Hero'
 import { ZoneSection } from '@/components/sections/ZoneSection'
 import { GlowFilters } from '@/components/ui/GlowFilters'
 import { zones } from '@/data/zones'
+import { useLanternTracking } from '@/hooks/useLanternTracking'
 import { useSmoothScroller } from '@/hooks/useSmoothScroller'
 
 export default function App() {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   useSmoothScroller(wrapperRef, contentRef)
+  useLanternTracking()
 
   return (
     <>
