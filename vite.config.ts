@@ -19,7 +19,7 @@ export default defineConfig({
       output: {
         codeSplitting: {
           groups: [
-            { name: 'illustrations', test: /assets[\/]svg/ },
+            { name: 'illustrations', test: /assets[/\\]svg/ },
             { name: 'vendor', test: /node_modules/ },
           ],
         },
