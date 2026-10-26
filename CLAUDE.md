@@ -50,6 +50,7 @@ src/
   shows the bioluminescent SVG part plus its pre-drawn `GlowHalo`, so lures and tail tips glow in the dark.
   Glow is never an animated SVG filter: halos are radial gradients animated only in opacity.
 - Underwater art (creatures, seafloor, submarine body) is static: no drift, parallax or idle motion.
+  Creatures only fade in once as the dive reaches them (`useCreatureReveal`, keyed on each placement's `top`).
   Only the sky scene (sun, gulls, waves, research ship) animates its SVGs.
 - Never animate an element that carries Tailwind `translate-*` positioning: GSAP folds it into `x`/`y`
   and later tweens overwrite it. Position with an outer wrapper and animate an inner element.

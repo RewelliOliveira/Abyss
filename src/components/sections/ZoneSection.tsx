@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { CreatureLayer } from '@/components/ui/CreatureLayer'
 import { Lantern } from '@/components/ui/Lantern'
 import { ZonePanel } from '@/components/ui/ZonePanel'
+import { useCreatureReveal } from '@/hooks/useCreatureReveal'
 import { useZoneDepth } from '@/hooks/useZoneDepth'
 import { creatureTraits } from '@/data/creatures'
 import type { Zone } from '@/types/ocean'
@@ -14,6 +15,7 @@ export function ZoneSection({ zone }: ZoneSectionProps) {
   const sectionRef = useRef<HTMLElement>(null)
   const headingId = `${zone.id}-title`
   useZoneDepth(sectionRef, zone.depth)
+  useCreatureReveal(sectionRef, zone.creatures)
   const glowingCreatures = zone.creatures.filter((placement) => creatureTraits[placement.kind].glow)
 
   return (

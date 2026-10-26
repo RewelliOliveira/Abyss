@@ -13,6 +13,7 @@ export const MOTION = {
   parallaxDepth: 160,
   riseBoost: 1.6,
   scrub: 1.2,
+  revealViewport: '90%',
   smooth: 1.4,
   returnDuration: 2.6,
   headlightSwitch: 0.9,
