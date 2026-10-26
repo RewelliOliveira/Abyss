@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import "./styles/theme.css";
+
+@layer base {
+  html {
+    background-color: var(--color-ocean-surface);
+    color: var(--color-foam);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    overflow-x: clip;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-glow-cyan);
+    outline-offset: 3px;
+  }
+}
