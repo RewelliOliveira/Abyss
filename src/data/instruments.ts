@@ -10,6 +10,13 @@ export const instrumentLabels = {
   surfaceZone: 'Surface',
 }
 
+export const instrumentShortLabels = {
+  depth: 'Depth',
+  pressure: 'Press.',
+  temperature: 'Temp.',
+  light: 'Light',
+}
+
 export const lightDescriptions = {
   sunlit: 'sunlit',
   dim: 'dim',

@@ -54,7 +54,7 @@ export const zones: Zone[] = [
     scientificName: 'Bathypelagic',
     depth: { from: 1000, to: 4000 },
     intro:
-      'No sunlight ever reaches this far. The only light comes from living things, and the water hovers around 4 °C.',
+      'No sunlight ever reaches this far. The only light comes from living things, and the water is just a few degrees above freezing.',
     facts: [
       'A female anglerfish dangles a lure that glows thanks to bacteria living inside it.',
       "The gulper eel's loosely hinged jaw is enormous for its body, and the tip of its tail carries a small pinkish light organ.",
