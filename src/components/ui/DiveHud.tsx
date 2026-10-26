@@ -14,7 +14,7 @@ export function DiveHud({ exitTargetId }: DiveHudProps) {
   useGSAP(
     () => {
       const media = gsap.matchMedia()
-      media.add({ motionOk: MEDIA.motionOk }, (context) => {
+      media.add({ motionOk: MEDIA.motionOk, reducedMotion: MEDIA.reducedMotion }, (context) => {
         const duration = context.conditions?.motionOk ? MOTION.fast : 0
         ScrollTrigger.create({
           trigger: document.getElementById(exitTargetId),

@@ -3,7 +3,7 @@ import { Submarine } from '@/components/creatures/Submarine'
 import { HeadlightBeam } from '@/components/ui/HeadlightBeam'
 import { DARKNESS_DEPTH } from '@/data/instruments'
 import { subscribeToDepth } from '@/lib/dive-store'
-import { gsap, useGSAP } from '@/lib/gsap'
+import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap'
 import { glowFilterUrl } from '@/lib/glow'
 import { MEDIA, MOTION } from '@/lib/motion'
 
@@ -32,9 +32,21 @@ export function DiveGuide() {
           gsap.to(headlights, { opacity: shouldShine ? 1 : 0.35, duration: switchDuration, overwrite: true })
         })
 
-        if (!motionOk) return stopListening
-
         const surface = document.getElementById('surface')
+        if (!motionOk) {
+          const arrival = ScrollTrigger.create({
+            trigger: surface,
+            start: 'bottom 60%',
+            onEnter: () => gsap.set('[data-sub-body]', { autoAlpha: 1 }),
+            onLeaveBack: () => gsap.set('[data-sub-body]', { autoAlpha: 0 }),
+          })
+          gsap.set('[data-sub-body]', { autoAlpha: arrival.scroll() >= arrival.start ? 1 : 0 })
+          return () => {
+            stopListening()
+            arrival.kill()
+          }
+        }
+
         const descent = gsap.timeline({
           scrollTrigger: { trigger: surface, start: 'top top', end: 'bottom top', scrub: MOTION.scrub },
         })
