@@ -30,17 +30,17 @@ export interface GullSpec {
 }
 
 export const flock: GullSpec[] = [
-  { id: 'gull-1', width: 'clamp(3.5rem, 7vw, 6.5rem)', top: 10, startX: 22, speed: [55, 70] },
-  { id: 'gull-2', width: 'clamp(3rem, 5.5vw, 5rem)', top: 24, startX: 58, speed: [45, 60] },
-  { id: 'gull-3', width: 'clamp(2.75rem, 5vw, 4.5rem)', top: 4, startX: 80, speed: [60, 78] },
-  { id: 'gull-4', width: 'clamp(3rem, 6vw, 5.5rem)', top: 32, startX: 38, speed: [50, 64], desktopOnly: true },
-  { id: 'gull-5', width: 'clamp(2.5rem, 4.5vw, 4rem)', top: 16, startX: 6, speed: [64, 82], desktopOnly: true },
-  { id: 'far-1', width: 'clamp(1rem, 1.6vw, 1.5rem)', top: 14, startX: 30, speed: [22, 30], distant: true },
-  { id: 'far-2', width: 'clamp(0.9rem, 1.3vw, 1.25rem)', top: 20, startX: 66, speed: [18, 26], distant: true },
-  { id: 'far-3', width: 'clamp(0.8rem, 1.1vw, 1.1rem)', top: 8, startX: 48, speed: [16, 24], distant: true },
-  { id: 'far-4', width: 'clamp(1rem, 1.4vw, 1.4rem)', top: 28, startX: 12, speed: [20, 28], distant: true, desktopOnly: true },
-  { id: 'far-5', width: 'clamp(0.8rem, 1vw, 1rem)', top: 6, startX: 88, speed: [14, 20], distant: true, desktopOnly: true },
-  { id: 'far-6', width: 'clamp(0.9rem, 1.2vw, 1.2rem)', top: 24, startX: 74, speed: [18, 24], distant: true, desktopOnly: true },
+  { id: 'gull-1', width: 'clamp(3.5rem, 7vw, 6.5rem)', top: 4, startX: 40, speed: [55, 70] },
+  { id: 'gull-2', width: 'clamp(3rem, 5.5vw, 5rem)', top: 10, startX: 62, speed: [45, 60] },
+  { id: 'gull-3', width: 'clamp(2.75rem, 5vw, 4.5rem)', top: 26, startX: 70, speed: [60, 78] },
+  { id: 'gull-4', width: 'clamp(3rem, 6vw, 5.5rem)', top: 2, startX: 18, speed: [50, 64], desktopOnly: true },
+  { id: 'gull-5', width: 'clamp(2.5rem, 4.5vw, 4rem)', top: 30, startX: 54, speed: [64, 82], desktopOnly: true },
+  { id: 'far-1', width: 'clamp(1rem, 1.6vw, 1.5rem)', top: 6, startX: 30, speed: [22, 30], distant: true },
+  { id: 'far-2', width: 'clamp(0.9rem, 1.3vw, 1.25rem)', top: 16, startX: 80, speed: [18, 26], distant: true },
+  { id: 'far-3', width: 'clamp(0.8rem, 1.1vw, 1.1rem)', top: 3, startX: 56, speed: [16, 24], distant: true },
+  { id: 'far-4', width: 'clamp(1rem, 1.4vw, 1.4rem)', top: 12, startX: 10, speed: [20, 28], distant: true, desktopOnly: true },
+  { id: 'far-5', width: 'clamp(0.8rem, 1vw, 1rem)', top: 22, startX: 90, speed: [14, 20], distant: true, desktopOnly: true },
+  { id: 'far-6', width: 'clamp(0.9rem, 1.2vw, 1.2rem)', top: 8, startX: 74, speed: [18, 24], distant: true, desktopOnly: true },
 ]
 
 export const flightRhythm = {
