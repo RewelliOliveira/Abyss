@@ -2,8 +2,12 @@
 @import "./styles/theme.css";
 
 @layer components {
-  [data-art-layer='glow'] svg > path {
+  [data-art-layer='glow'] svg {
     visibility: hidden;
+  }
+
+  [data-art-layer='glow'] :is([data-part='lure'], [data-part='tail-tip'], [data-part='photophores']) {
+    visibility: visible;
   }
 }
 
