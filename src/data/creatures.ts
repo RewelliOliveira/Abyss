@@ -16,7 +16,7 @@ export const creatureTraits: Record<CreatureKind, CreatureTraits> = {
   viperfish: { facing: 'right', glow: { part: 'photophores', color: 'cyan', scattered: true } },
   anglerfish: { facing: 'right', glow: { part: 'lure', color: 'cyan' } },
   'gulper-eel': { facing: 'right', glow: { part: 'tail-tip', color: 'pink' } },
-  'vampire-squid': { facing: 'front', glow: { part: 'eyes', color: 'pink', scattered: true } },
+  'vampire-squid': { facing: 'front', glow: { part: 'eyes', color: 'pink', scattered: true, spread: 2 } },
   'crown-jellyfish': { facing: 'front', glow: { part: 'photophores', color: 'cyan', scattered: true } },
   'tripod-fish': { facing: 'right' },
   'bigfin-squid': { facing: 'front' },

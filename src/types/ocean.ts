@@ -52,6 +52,7 @@ export interface GlowPart {
   part: string
   color: GlowColor
   scattered?: boolean
+  spread?: number
 }
 
 export interface CreatureTraits {

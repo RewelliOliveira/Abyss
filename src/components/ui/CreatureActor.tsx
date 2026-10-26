@@ -58,7 +58,7 @@ export function CreatureActor({ placement, layer }: CreatureActorProps) {
             <Art label={layer === 'body' ? placement.label : undefined} className="block h-auto w-full" />
             {glow &&
               haloAnchors.map((anchor) => (
-                <GlowHalo key={`${anchor.x}-${anchor.y}`} anchor={anchor} part={glow.part} color={glow.color} />
+                <GlowHalo key={`${anchor.x}-${anchor.y}`} anchor={anchor} part={glow.part} color={glow.color} spread={glow.spread} />
               ))}
           </div>
         </div>
