@@ -84,12 +84,14 @@ export const zones: Zone[] = [
       'Near-freezing water, crushing pressure and total darkness blanket the wide, flat abyssal plains.',
     facts: [
       'The water here stays just above freezing, and the pressure tops 400 atmospheres.',
-      'Giant isopods, deep-sea relatives of the pill bug, scavenge the seafloor and can reach about 45 cm (18 in) long.',
+      'Tripod fish perch on three long fin rays above the soft mud, so they can feed without stirring up the seafloor.',
     ],
     dark: true,
     backgroundClass: 'bg-linear-to-b from-ocean-midnight to-ocean-abyssal',
     creatures: [
-      { id: 'isopod', kind: 'giant-isopod', label: 'A giant isopod crawling across the seafloor', top: 62, left: 30, width: 'clamp(12rem, 34vw, 30rem)', parallax: 0.8, swim: 'right' },
+      { id: 'crown-jellyfish', kind: 'crown-jellyfish', label: 'A deep red crown jellyfish ringed with glowing blue spots', top: 50, left: 58, width: 'clamp(8rem, 20vw, 17rem)', parallax: 0.7, swim: 'up' },
+      { id: 'vampire-squid', kind: 'vampire-squid', label: 'A vampire squid with webbed arms and glowing red eyes', top: 12, left: 6, width: 'clamp(10rem, 26vw, 22rem)', parallax: 0.85, swim: 'up' },
+      { id: 'tripod-fish', kind: 'tripod-fish', label: 'A tripod fish standing on three long fin rays', top: 74, left: 20, width: 'clamp(11rem, 30vw, 26rem)', parallax: 0.8, swim: 'right' },
     ],
   },
   {
@@ -107,7 +109,10 @@ export const zones: Zone[] = [
     dark: true,
     backgroundClass: 'bg-linear-to-b from-ocean-abyssal to-ocean-hadal',
     creatures: [
-      { id: 'snailfish', kind: 'snailfish', label: 'A pale pink hadal snailfish', top: 62, left: 26, width: 'clamp(10rem, 28vw, 24rem)', parallax: 0.7, swim: 'left' },
+      { id: 'bigfin-squid', kind: 'bigfin-squid', label: 'A pale bigfin squid with long, elbowed arms trailing below it', top: 8, left: 10, width: 'clamp(9rem, 22vw, 19rem)', parallax: 0.75, swim: 'up' },
+      { id: 'red-shrimp', kind: 'red-shrimp', label: 'A bright red deep-sea shrimp with long antennae', top: 50, left: 54, width: 'clamp(9rem, 24vw, 20rem)', parallax: 1, swim: 'right' },
+      { id: 'snailfish', kind: 'snailfish', label: 'A pale pink hadal snailfish', top: 68, left: 8, width: 'clamp(10rem, 28vw, 24rem)', parallax: 0.7, swim: 'left' },
+      { id: 'sea-anemone', kind: 'sea-anemone', label: 'A deep-sea anemone with pink tentacles on a long pale stalk', top: 78, left: 64, width: 'clamp(5rem, 12vw, 10rem)', parallax: 0.9, swim: 'up' },
     ],
   },
 ]

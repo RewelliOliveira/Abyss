@@ -13,7 +13,12 @@ import { SpermWhale } from '@/components/creatures/SpermWhale'
 import { Viperfish } from '@/components/creatures/Viperfish'
 import { Anglerfish } from '@/components/creatures/Anglerfish'
 import { GulperEel } from '@/components/creatures/GulperEel'
-import { GiantIsopod } from '@/components/creatures/GiantIsopod'
+import { VampireSquid } from '@/components/creatures/VampireSquid'
+import { CrownJellyfish } from '@/components/creatures/CrownJellyfish'
+import { TripodFish } from '@/components/creatures/TripodFish'
+import { BigfinSquid } from '@/components/creatures/BigfinSquid'
+import { RedShrimp } from '@/components/creatures/RedShrimp'
+import { SeaAnemone } from '@/components/creatures/SeaAnemone'
 import { Snailfish } from '@/components/creatures/Snailfish'
 import { Seafloor } from '@/components/creatures/Seafloor'
 import type { CreatureArtProps } from '@/types/art'
@@ -36,7 +41,12 @@ export const creatureArt: Record<CreatureKind, ComponentType<CreatureArtProps>> 
   viperfish: Viperfish,
   anglerfish: Anglerfish,
   'gulper-eel': GulperEel,
-  'giant-isopod': GiantIsopod,
+  'vampire-squid': VampireSquid,
+  'crown-jellyfish': CrownJellyfish,
+  'tripod-fish': TripodFish,
+  'bigfin-squid': BigfinSquid,
+  'red-shrimp': RedShrimp,
+  'sea-anemone': SeaAnemone,
   snailfish: Snailfish,
   seafloor: Seafloor,
 }

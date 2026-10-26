@@ -66,9 +66,20 @@ export const creatureMotion: Record<CreatureKind, AmbientPreset> = {
       { part: 'tail-tip', motion: 'blink', amount: 0.3, cycle: [1.5, 4.5] },
     ],
   },
-  'giant-isopod': {
-    body: { kind: 'crawl', step: [18, 34], stepDuration: [1.4, 2.2], pause: [0.8, 2.4], bob: 2, range: 60, turns: true },
+  'vampire-squid': {
+    body: { kind: 'pulse', interval: [3, 4.5], squash: 0.1, rise: [12, 20], sink: 6 },
   },
+  'crown-jellyfish': {
+    body: { kind: 'pulse', interval: [2.4, 3.6], squash: 0.12, rise: [18, 28], sink: 7 },
+  },
+  'tripod-fish': {},
+  'bigfin-squid': {
+    body: { kind: 'wander', x: 6, y: 10, rotation: 1, speed: 0.05, lean: 0.2 },
+  },
+  'red-shrimp': {
+    body: { kind: 'wander', x: 12, y: 6, rotation: 2, speed: 0.1, lean: 0.4 },
+  },
+  'sea-anemone': {},
   snailfish: {
     body: { kind: 'wander', x: 16, y: 10, rotation: 3, speed: 0.08, lean: 0.5 },
     parts: [{ part: 'tail', motion: 'wag', amount: 6, cycle: [1.8, 2.4], origin: '100% 50%' }],

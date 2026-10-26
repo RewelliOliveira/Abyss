@@ -16,7 +16,12 @@ export type CreatureKind =
   | 'viperfish'
   | 'anglerfish'
   | 'gulper-eel'
-  | 'giant-isopod'
+  | 'vampire-squid'
+  | 'crown-jellyfish'
+  | 'tripod-fish'
+  | 'bigfin-squid'
+  | 'red-shrimp'
+  | 'sea-anemone'
   | 'snailfish'
   | 'seafloor'
 
