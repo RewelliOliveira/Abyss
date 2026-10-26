@@ -4,6 +4,7 @@ import { ZoneSection } from '@/components/sections/ZoneSection'
 import { DiveGuide } from '@/components/ui/DiveGuide'
 import { GlowFilters } from '@/components/ui/GlowFilters'
 import { InstrumentPanel } from '@/components/ui/InstrumentPanel'
+import { ParticleField } from '@/components/ui/ParticleField'
 import { zones } from '@/data/zones'
 import { useLanternTracking } from '@/hooks/useLanternTracking'
 import { useSmoothScroller } from '@/hooks/useSmoothScroller'
@@ -17,6 +18,7 @@ export default function App() {
   return (
     <>
       <GlowFilters />
+      <ParticleField />
       <DiveGuide />
       <InstrumentPanel />
       <div ref={wrapperRef} id="smooth-wrapper" className="relative z-10">
