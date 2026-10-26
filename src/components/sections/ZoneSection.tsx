@@ -31,7 +31,7 @@ export function ZoneSection({ zone }: ZoneSectionProps) {
           <Lantern fadeIn={zone.id === 'midnight'} />
         </div>
       )}
-      <div className="pointer-events-none relative z-30 mx-auto flex w-full max-w-content justify-end px-gutter py-section">
+      <div className="pointer-events-none relative z-30 mx-auto flex w-full max-w-content justify-end px-gutter pb-10 pt-section md:py-section">
         <ZonePanel zone={zone} headingId={headingId} />
       </div>
       <div data-stage className="pointer-events-none relative h-stage md:absolute md:inset-0 md:h-auto">

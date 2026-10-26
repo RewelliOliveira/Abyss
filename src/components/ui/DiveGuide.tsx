@@ -91,7 +91,7 @@ export function DiveGuide() {
     <div
       ref={guideRef}
       aria-hidden="true"
-      className="pointer-events-none fixed bottom-36 right-3 z-30 w-16 md:bottom-auto md:left-[4vw] md:right-auto md:top-[28vh] md:w-[clamp(7rem,11vw,10rem)]"
+      className="pointer-events-none fixed bottom-36 right-2 z-30 w-14 md:bottom-auto md:left-[4vw] md:right-auto md:top-[28vh] md:w-[clamp(7rem,11vw,10rem)]"
     >
       <div data-sub-body>
         <div>
@@ -99,7 +99,7 @@ export function DiveGuide() {
             <svg
               viewBox="0 0 10 1000"
               preserveAspectRatio="none"
-              className="absolute bottom-[92%] left-[46%] h-[120vh] w-2 overflow-visible opacity-40 md:opacity-100"
+              className="absolute bottom-[92%] left-[46%] hidden h-[120vh] w-2 overflow-visible md:block"
             >
               <path
                 data-cable
