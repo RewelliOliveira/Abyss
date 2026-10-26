@@ -19,6 +19,8 @@ export default defineConfig({
       output: {
         codeSplitting: {
           groups: [
+            { name: 'seafloor', test: /seafloor\.svg/ },
+            { name: 'sea-life', test: /assets[/\\]svg[/\\](sea-turtle|fish|jellyfish|squid|anglerfish|gulper-eel|giant-isopod|snailfish)/ },
             { name: 'illustrations', test: /assets[/\\]svg/ },
             { name: 'vendor', test: /node_modules/ },
           ],
