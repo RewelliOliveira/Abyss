@@ -65,7 +65,7 @@ export function Lantern({ fadeIn }: LanternProps) {
     <div
       ref={rootRef}
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 overflow-hidden motion-reduce:hidden"
+      className={`pointer-events-none absolute inset-0 overflow-hidden motion-reduce:hidden ${fadeIn ? 'mask-t-from-50%' : ''}`}
     >
       <div
         ref={beamRef}
