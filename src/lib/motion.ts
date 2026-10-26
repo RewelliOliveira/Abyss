@@ -20,6 +20,7 @@ export const MOTION = {
   returnDuration: 2.6,
   headlightSwitch: 0.9,
   lanternFollow: 0.12,
+  lanternRecenterDelay: 4,
   mobileDistanceScale: 0.5,
   popoverFade: 0.25,
   popoverGap: 12,

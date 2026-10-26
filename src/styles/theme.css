@@ -41,6 +41,8 @@
   --spacing-stage: 160svh;
   --spacing-lantern: clamp(6rem, 3.3592rem + 11.2676vw, 13.5rem);
   --spacing-lantern-edge: clamp(11rem, 6.0704rem + 21.0329vw, 25rem);
+  --spacing-lantern-touch: clamp(8.5rem, 6.5rem + 8vw, 13.5rem);
+  --spacing-lantern-touch-edge: clamp(14rem, 10.5rem + 14vw, 25rem);
   --container-content: 72rem;
 
   --radius-panel: 1.25rem;

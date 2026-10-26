@@ -9,6 +9,7 @@ interface Point {
 const target: Point = { x: 0, y: 0 }
 const position: Point = { x: 0, y: 0 }
 let usesTouch = false
+let recenter: gsap.core.Tween | null = null
 
 function centerOfViewport(): Point {
   return { x: window.innerWidth / 2, y: window.innerHeight / 2 }
@@ -19,18 +20,26 @@ function aimAt(point: Point): void {
   target.y = point.y
 }
 
-function handlePointer(event: PointerEvent): void {
-  usesTouch = event.pointerType !== 'mouse'
-  aimAt({ x: event.clientX, y: event.clientY })
-}
-
-function handlePointerEnd(event: PointerEvent): void {
-  if (event.pointerType === 'mouse') return
+function aimAtCenter(): void {
   aimAt(centerOfViewport())
 }
 
+function handlePointer(event: PointerEvent): void {
+  if (event.pointerType !== 'mouse') return
+  usesTouch = false
+  aimAt({ x: event.clientX, y: event.clientY })
+}
+
+function handleTap(event: PointerEvent): void {
+  if (event.pointerType === 'mouse') return
+  usesTouch = true
+  aimAt({ x: event.clientX, y: event.clientY })
+  recenter?.kill()
+  recenter = gsap.delayedCall(MOTION.lanternRecenterDelay, aimAtCenter)
+}
+
 function handleResize(): void {
-  if (usesTouch || (target.x === 0 && target.y === 0)) aimAt(centerOfViewport())
+  if (usesTouch || (target.x === 0 && target.y === 0)) aimAtCenter()
 }
 
 function easeTowardTarget(): void {
@@ -50,16 +59,16 @@ export function startLanternTracking(): () => void {
   position.y = center.y
   window.addEventListener('pointermove', handlePointer, { passive: true })
   window.addEventListener('pointerdown', handlePointer, { passive: true })
-  window.addEventListener('pointerup', handlePointerEnd, { passive: true })
-  window.addEventListener('pointercancel', handlePointerEnd, { passive: true })
+  window.addEventListener('pointerup', handleTap, { passive: true })
   window.addEventListener('resize', handleResize)
   gsap.ticker.add(easeTowardTarget)
   return () => {
     window.removeEventListener('pointermove', handlePointer)
     window.removeEventListener('pointerdown', handlePointer)
-    window.removeEventListener('pointerup', handlePointerEnd)
-    window.removeEventListener('pointercancel', handlePointerEnd)
+    window.removeEventListener('pointerup', handleTap)
     window.removeEventListener('resize', handleResize)
     gsap.ticker.remove(easeTowardTarget)
+    recenter?.kill()
+    recenter = null
   }
 }
