@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { Submarine } from '@/components/creatures/Submarine'
 import { HeadlightBeam } from '@/components/ui/HeadlightBeam'
 import { DARKNESS_DEPTH } from '@/data/instruments'
@@ -6,9 +6,16 @@ import { subscribeToDepth } from '@/lib/dive-store'
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap'
 import { glowFilterUrl } from '@/lib/glow'
 import { MEDIA, MOTION } from '@/lib/motion'
+import { measurePartAnchors, type Anchor } from '@/lib/svg-anchors'
 
 export function DiveGuide() {
   const guideRef = useRef<HTMLDivElement>(null)
+  const [lensAnchors, setLensAnchors] = useState<Anchor[]>([])
+
+  const measureLenses = useCallback((art: HTMLDivElement | null) => {
+    const svg = art?.querySelector('svg')
+    if (svg) setLensAnchors(measurePartAnchors(svg, 'headlights'))
+  }, [])
 
   useGSAP(
     () => {
@@ -28,7 +35,7 @@ export function DiveGuide() {
           const shouldShine = depth >= DARKNESS_DEPTH
           if (shouldShine === lightsOn) return
           lightsOn = shouldShine
-          gsap.to('[data-headlight-beam]', { autoAlpha: shouldShine ? 1 : 0, duration: switchDuration, overwrite: true })
+          gsap.to('[data-headlight-beams]', { autoAlpha: shouldShine ? 1 : 0, duration: switchDuration, overwrite: true })
           gsap.to(headlights, { opacity: shouldShine ? 1 : 0.35, duration: switchDuration, overwrite: true })
         })
 
@@ -96,8 +103,14 @@ export function DiveGuide() {
                 className="fill-none stroke-mist [stroke-width:2]"
               />
             </svg>
-            <HeadlightBeam />
-            <Submarine className="relative block h-auto w-full" />
+            <div ref={measureLenses} data-sub-art className="relative">
+              <div data-headlight-beams className="absolute inset-0 opacity-0">
+                {lensAnchors.map((anchor) => (
+                  <HeadlightBeam key={`${anchor.x}-${anchor.y}`} anchor={anchor} />
+                ))}
+              </div>
+              <Submarine className="relative block h-auto w-full" />
+            </div>
           </div>
         </div>
       </div>
