@@ -76,7 +76,7 @@ export function DiveGuide() {
             <svg
               viewBox="0 0 10 1000"
               preserveAspectRatio="none"
-              className="absolute bottom-[92%] left-[46%] h-[120vh] w-2 overflow-visible"
+              className="absolute bottom-[92%] left-[46%] h-[120vh] w-2 overflow-visible opacity-40 md:opacity-100"
             >
               <path
                 data-cable

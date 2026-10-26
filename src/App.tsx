@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { Hero } from '@/components/sections/Hero'
+import { TrenchFloor } from '@/components/sections/TrenchFloor'
 import { ZoneSection } from '@/components/sections/ZoneSection'
 import { DiveGuide } from '@/components/ui/DiveGuide'
 import { GlowFilters } from '@/components/ui/GlowFilters'
@@ -28,6 +29,7 @@ export default function App() {
             {zones.map((zone) => (
               <ZoneSection key={zone.id} zone={zone} />
             ))}
+            <TrenchFloor />
           </main>
         </div>
       </div>
