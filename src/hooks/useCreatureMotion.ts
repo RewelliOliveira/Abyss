@@ -1,5 +1,5 @@
 import type { RefObject } from 'react'
-import { animateDrift, animateFloat, animateParts, animatePlumes, applyGlowFilters, findActors } from '@/lib/creature-motion'
+import { animateDrift, animateFloat, animateParts, applyGlowFilters, findActors } from '@/lib/creature-motion'
 import { gsap, useGSAP } from '@/lib/gsap'
 import { MEDIA, MOTION } from '@/lib/motion'
 import type { CreaturePlacement } from '@/types/ocean'
@@ -23,7 +23,6 @@ export function useCreatureMotion(sectionRef: RefObject<HTMLElement | null>, cre
           animateFloat(actors, index)
           animateParts(actors, placement)
         })
-        animatePlumes(section)
       })
       return () => media.revert()
     },

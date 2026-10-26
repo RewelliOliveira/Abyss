@@ -11,6 +11,5 @@ export const creatureTraits: Record<CreatureKind, CreatureTraits> = {
   'gulper-eel': { facing: 'right', glow: { part: 'tail-tip', color: 'pink' } },
   'giant-isopod': { facing: 'right' },
   snailfish: { facing: 'right' },
-  'hydrothermal-vent': { facing: 'front' },
   seafloor: { facing: 'front' },
 }

@@ -13,7 +13,6 @@ export const MOTION = {
   swimDistance: 18,
   parallaxDepth: 160,
   riseBoost: 1.6,
-  plumeCycle: 6,
   scrub: 1.2,
   smooth: 1.4,
   returnDuration: 2.6,

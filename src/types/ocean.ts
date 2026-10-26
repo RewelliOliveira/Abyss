@@ -11,7 +11,6 @@ export type CreatureKind =
   | 'gulper-eel'
   | 'giant-isopod'
   | 'snailfish'
-  | 'hydrothermal-vent'
   | 'seafloor'
 
 export type GlowColor = 'cyan' | 'pink'

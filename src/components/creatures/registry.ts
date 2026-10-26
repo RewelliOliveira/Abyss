@@ -8,7 +8,6 @@ import { Anglerfish } from '@/components/creatures/Anglerfish'
 import { GulperEel } from '@/components/creatures/GulperEel'
 import { GiantIsopod } from '@/components/creatures/GiantIsopod'
 import { Snailfish } from '@/components/creatures/Snailfish'
-import { HydrothermalVent } from '@/components/creatures/HydrothermalVent'
 import { Seafloor } from '@/components/creatures/Seafloor'
 import type { CreatureArtProps } from '@/types/art'
 import type { CreatureKind } from '@/types/ocean'
@@ -25,6 +24,5 @@ export const creatureArt: Record<CreatureKind, ComponentType<CreatureArtProps>> 
   'gulper-eel': GulperEel,
   'giant-isopod': GiantIsopod,
   snailfish: Snailfish,
-  'hydrothermal-vent': HydrothermalVent,
   seafloor: Seafloor,
 }

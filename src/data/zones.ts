@@ -75,13 +75,11 @@ export const zones: Zone[] = [
     facts: [
       'The water here stays just above freezing, and the pressure tops 400 atmospheres.',
       'Giant isopods, deep-sea relatives of the pill bug, scavenge the seafloor and can reach about 45 cm (18 in) long.',
-      'Hydrothermal vents gush fluid hotter than 350 °C, feeding ecosystems powered by chemicals instead of sunlight.',
     ],
     dark: true,
     backgroundClass: 'bg-linear-to-b from-ocean-midnight to-ocean-abyssal',
     creatures: [
-      { id: 'vent', kind: 'hydrothermal-vent', label: 'A hydrothermal vent chimney releasing dark smoke, ringed by tube worms', top: 50, left: 60, width: 'clamp(9rem, 22vw, 19rem)', parallax: 0.5, swim: 'still' },
-      { id: 'isopod', kind: 'giant-isopod', label: 'A giant isopod crawling across the seafloor', top: 80, left: 6, width: 'clamp(10rem, 26vw, 22rem)', parallax: 0.8, swim: 'right' },
+      { id: 'isopod', kind: 'giant-isopod', label: 'A giant isopod crawling across the seafloor', top: 62, left: 30, width: 'clamp(12rem, 34vw, 30rem)', parallax: 0.8, swim: 'right' },
     ],
   },
   {

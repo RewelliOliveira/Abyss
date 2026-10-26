@@ -96,34 +96,4 @@ export function animateParts(actors: Actors, placement: CreaturePlacement): void
       },
     )
   }
-  const smokeParts = findParts(actors, 'smoke')
-  if (!smokeParts.length) return
-  gsap.to(smokeParts, {
-    y: -MOTION.floatDistance,
-    scaleY: 1.06,
-    transformOrigin: '50% 100%',
-    duration: MOTION.floatCycle / 2,
-    ease: MOTION.easeInOut,
-    repeat: -1,
-    yoyo: true,
-  })
-}
-
-export function animatePlumes(scope: HTMLElement): void {
-  const plumes = scope.querySelectorAll<HTMLElement>('[data-plume]')
-  if (!plumes.length) return
-  gsap.fromTo(
-    plumes,
-    { y: 0, x: 0, scale: 0.6 },
-    {
-      keyframes: { autoAlpha: [0, 0.7, 0] },
-      y: '-320%',
-      x: () => gsap.utils.random(-60, 60),
-      scale: 2.6,
-      duration: MOTION.plumeCycle,
-      ease: 'sine.out',
-      repeat: -1,
-      stagger: { each: MOTION.plumeCycle / plumes.length, repeat: -1 },
-    },
-  )
 }
