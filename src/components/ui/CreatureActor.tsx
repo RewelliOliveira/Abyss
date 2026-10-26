@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useRef, useState, type CSSProperties } from 'react'
 import { creatureArt } from '@/components/creatures/registry'
 import { CreaturePopover } from '@/components/ui/CreaturePopover'
 import { GlowHalo } from '@/components/ui/GlowHalo'
@@ -20,6 +20,17 @@ function facesAgainstSwim(placement: CreaturePlacement): boolean {
   if (facing === 'front') return false
   if (placement.swim !== 'left' && placement.swim !== 'right') return false
   return facing !== placement.swim
+}
+
+function actorPosition({ top, left, width, mobile }: CreaturePlacement): CSSProperties {
+  return {
+    '--actor-top': `${top}%`,
+    '--actor-left': `${left}%`,
+    '--actor-width': width,
+    '--actor-top-mobile': `${mobile?.top ?? top}%`,
+    '--actor-left-mobile': `${mobile?.left ?? left}%`,
+    '--actor-width-mobile': mobile?.width ?? width,
+  } as CSSProperties
 }
 
 export function CreatureActor({ placement, layer }: CreatureActorProps) {
@@ -46,8 +57,8 @@ export function CreatureActor({ placement, layer }: CreatureActorProps) {
   return (
     <div
       data-actor={placement.id}
-      className={`absolute ${visibility}`}
-      style={{ top: `${placement.top}%`, left: `${placement.left}%`, width: placement.width }}
+      className={`absolute top-(--actor-top-mobile) left-(--actor-left-mobile) w-(--actor-width-mobile) md:top-(--actor-top) md:left-(--actor-left) md:w-(--actor-width) ${visibility}`}
+      style={actorPosition(placement)}
     >
       <div data-ambient={placement.id}>
         <div

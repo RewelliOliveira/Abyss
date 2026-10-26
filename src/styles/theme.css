@@ -38,6 +38,7 @@
   --spacing-gutter: clamp(1rem, 0.5599rem + 1.8779vw, 2.25rem);
   --spacing-section: clamp(6rem, 3.3592rem + 11.2676vw, 13.5rem);
   --spacing-zone: 180svh;
+  --spacing-stage: 160svh;
   --spacing-lantern: clamp(6rem, 3.3592rem + 11.2676vw, 13.5rem);
   --spacing-lantern-edge: clamp(11rem, 6.0704rem + 21.0329vw, 25rem);
   --container-content: 72rem;

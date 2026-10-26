@@ -14,7 +14,8 @@ export function useCreatureReveal(sectionRef: RefObject<HTMLElement | null>, cre
   useGSAP(
     () => {
       const section = sectionRef.current
-      if (!section) return
+      const stage = section?.querySelector<HTMLElement>('[data-stage]')
+      if (!section || !stage) return
 
       const media = gsap.matchMedia()
       media.add({ motionOk: MEDIA.motionOk, mobile: MEDIA.mobile }, (context) => {
@@ -25,7 +26,8 @@ export function useCreatureReveal(sectionRef: RefObject<HTMLElement | null>, cre
           const actors = section.querySelectorAll<HTMLElement>(`[data-actor="${placement.id}"]`)
           if (!actors.length) return
           const offset = entryOffset[placement.swim]
-          const entryTop = () => (section.offsetHeight * placement.top) / 100
+          const top = mobile ? (placement.mobile?.top ?? placement.top) : placement.top
+          const entryTop = () => stage.offsetTop + (stage.offsetHeight * top) / 100
           gsap.from(actors, {
             autoAlpha: 0,
             x: `${offset.x * distance}vw`,

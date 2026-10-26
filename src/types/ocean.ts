@@ -46,6 +46,13 @@ export interface CreaturePlacement {
   parallax: number
   swim: SwimDirection
   desktopOnly?: boolean
+  mobile?: MobilePlacement
+}
+
+export interface MobilePlacement {
+  top: number
+  left: number
+  width?: string
 }
 
 export interface GlowPart {
