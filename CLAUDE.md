@@ -37,6 +37,23 @@ src/
   styles/           theme tokens
 ```
 
+## How the dive works
+
+- `src/lib/dive-store.ts` holds the current depth. Each `ZoneSection` maps its scroll progress to its
+  depth range (`useZoneDepth`); instruments, headlights and particles subscribe to it.
+- Page background: every zone paints a vertical gradient from its color to the next one
+  (`backgroundClass` in `src/data/zones.ts`), so the gradient is continuous and scroll-driven.
+- Fixed layers (outside `#smooth-wrapper`): `ParticleField` (canvas, z-20) and `DiveHud`
+  (submarine guide + instrument panel, z-30), which fades out near the footer.
+- Dark zones (`dark: true`) render a `Lantern` (darkness with a radial hole following the pointer,
+  touch or screen center) and a second `CreatureLayer` with `layer="glow"` above the darkness that only
+  shows the bioluminescent SVG part, so lures and eyes glow in the dark.
+- Creatures are placed by data (`CreaturePlacement`); animatable SVG parts are `<g data-part="...">`
+  (`lure`, `tail-tip`, `eyes`, `tentacles`, `headlights`, `propeller`, `smoke`), configured in
+  `src/data/creatures.ts`.
+- Tune motion in `src/lib/motion.ts` (`MOTION`, `MEDIA`), colors/fonts/spacing in `src/styles/theme.css`,
+  Google Fonts link in `index.html`.
+
 ## Code standards
 
 - Page language is **English (en-US)**: all visible text, alt text and meta tags. `<html lang="en">`.
