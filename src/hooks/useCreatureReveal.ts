@@ -1,7 +1,14 @@
 import type { RefObject } from 'react'
 import { gsap, useGSAP } from '@/lib/gsap'
 import { MEDIA, MOTION } from '@/lib/motion'
-import type { CreaturePlacement } from '@/types/ocean'
+import type { CreaturePlacement, SwimDirection } from '@/types/ocean'
+
+const entryOffset: Record<SwimDirection, { x: number; y: number }> = {
+  right: { x: -1, y: 0 },
+  left: { x: 1, y: 0 },
+  up: { x: 0, y: 1 },
+  still: { x: 0, y: 0 },
+}
 
 export function useCreatureReveal(sectionRef: RefObject<HTMLElement | null>, creatures: CreaturePlacement[]): void {
   useGSAP(
@@ -10,18 +17,25 @@ export function useCreatureReveal(sectionRef: RefObject<HTMLElement | null>, cre
       if (!section) return
 
       const media = gsap.matchMedia()
-      media.add(MEDIA.motionOk, () => {
+      media.add({ motionOk: MEDIA.motionOk, mobile: MEDIA.mobile }, (context) => {
+        const { motionOk, mobile } = context.conditions ?? {}
+        if (!motionOk) return
+        const distance = MOTION.enterDistance * (mobile ? MOTION.mobileDistanceScale : 1)
         creatures.forEach((placement) => {
           const actors = section.querySelectorAll<HTMLElement>(`[data-actor="${placement.id}"]`)
           if (!actors.length) return
+          const offset = entryOffset[placement.swim]
+          const entryTop = () => (section.offsetHeight * placement.top) / 100
           gsap.from(actors, {
             autoAlpha: 0,
-            duration: MOTION.slow,
-            ease: MOTION.ease,
+            x: `${offset.x * distance}vw`,
+            y: `${offset.y * distance}vh`,
+            ease: 'none',
             scrollTrigger: {
               trigger: section,
-              start: () => `top+=${(section.offsetHeight * placement.top) / 100} ${MOTION.revealViewport}`,
-              toggleActions: 'play none none reverse',
+              start: () => `top+=${entryTop()} ${MOTION.enterStart}`,
+              end: () => `top+=${entryTop()} ${MOTION.enterEnd}`,
+              scrub: MOTION.scrub,
             },
           })
         })

@@ -45,8 +45,14 @@ export const zones: Zone[] = [
     dark: false,
     backgroundClass: 'bg-linear-to-b from-ocean-sunlight to-ocean-twilight',
     creatures: [
-      { id: 'jellyfish', kind: 'jellyfish', label: 'A pink jellyfish trailing long tentacles', top: 50, left: 58, width: 'clamp(8rem, 20vw, 17rem)', parallax: 0.7, swim: 'up' },
-      { id: 'squid', kind: 'squid', label: 'A red squid jetting through the water', top: 72, left: 10, width: 'clamp(10rem, 26vw, 22rem)', parallax: 1.1, swim: 'left' },
+      { id: 'swordfish', kind: 'swordfish', label: 'A swordfish with a long, flat bill', top: 16, left: 18, width: 'clamp(10rem, 28vw, 24rem)', parallax: 0.9, swim: 'right' },
+      { id: 'lanternfish-1', kind: 'lanternfish', label: 'Lanternfish with rows of glowing light organs along their bellies', top: 40, left: 26, width: 'clamp(4.5rem, 9vw, 8rem)', parallax: 1.1, swim: 'right' },
+      { id: 'lanternfish-2', kind: 'lanternfish', top: 46, left: 16, width: 'clamp(4rem, 8vw, 7rem)', parallax: 1.2, swim: 'right' },
+      { id: 'lanternfish-3', kind: 'lanternfish', top: 52, left: 30, width: 'clamp(3.5rem, 7vw, 6rem)', parallax: 1.05, swim: 'right', desktopOnly: true },
+      { id: 'jellyfish', kind: 'jellyfish', label: 'A pink jellyfish trailing long tentacles', top: 50, left: 60, width: 'clamp(7rem, 17vw, 14rem)', parallax: 0.7, swim: 'up' },
+      { id: 'squid', kind: 'squid', label: 'A red squid jetting through the water', top: 70, left: 18, width: 'clamp(9rem, 22vw, 19rem)', parallax: 1.1, swim: 'left' },
+      { id: 'hatchetfish-1', kind: 'hatchetfish', label: 'Deep-bodied hatchetfish with glowing spots on their bellies', top: 80, left: 60, width: 'clamp(4.5rem, 9vw, 8rem)', parallax: 1, swim: 'left' },
+      { id: 'hatchetfish-2', kind: 'hatchetfish', top: 86, left: 76, width: 'clamp(4rem, 8vw, 7rem)', parallax: 1.15, swim: 'left' },
     ],
   },
   {

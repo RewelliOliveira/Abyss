@@ -43,6 +43,15 @@ export const creatureMotion: Record<CreatureKind, AmbientPreset> = {
     body: { kind: 'jet', interval: [3.5, 5.5], thrust: [50, 80], squash: 0.16, driftBack: 0.35 },
     parts: [{ part: 'arms', motion: 'wag', amount: 6, cycle: [1.6, 2.2], lag: 0.8, origin: '0% 30%' }],
   },
+  swordfish: {
+    body: { kind: 'wander', x: 26, y: 8, rotation: 2, speed: 0.12, lean: 0.5 },
+  },
+  lanternfish: {
+    body: { kind: 'wander', x: 14, y: 10, rotation: 4, speed: 0.14, lean: 0.6 },
+  },
+  hatchetfish: {
+    body: { kind: 'wander', x: 10, y: 8, rotation: 3, speed: 0.09, lean: 0.4 },
+  },
   anglerfish: {
     body: { kind: 'wander', x: 10, y: 8, rotation: 2, speed: 0.07, lean: 0.3 },
     parts: [{ part: 'lure', motion: 'blink', amount: 0.25, cycle: [2.5, 6] }],

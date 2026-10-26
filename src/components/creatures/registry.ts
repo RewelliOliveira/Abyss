@@ -7,6 +7,9 @@ import { MantaRay } from '@/components/creatures/MantaRay'
 import { HammerheadShark } from '@/components/creatures/HammerheadShark'
 import { Jellyfish } from '@/components/creatures/Jellyfish'
 import { Squid } from '@/components/creatures/Squid'
+import { Swordfish } from '@/components/creatures/Swordfish'
+import { Lanternfish } from '@/components/creatures/Lanternfish'
+import { Hatchetfish } from '@/components/creatures/Hatchetfish'
 import { Anglerfish } from '@/components/creatures/Anglerfish'
 import { GulperEel } from '@/components/creatures/GulperEel'
 import { GiantIsopod } from '@/components/creatures/GiantIsopod'
@@ -26,6 +29,9 @@ export const creatureArt: Record<CreatureKind, ComponentType<CreatureArtProps>> 
   'hammerhead-shark': HammerheadShark,
   jellyfish: Jellyfish,
   squid: Squid,
+  swordfish: Swordfish,
+  lanternfish: Lanternfish,
+  hatchetfish: Hatchetfish,
   anglerfish: Anglerfish,
   'gulper-eel': GulperEel,
   'giant-isopod': GiantIsopod,
