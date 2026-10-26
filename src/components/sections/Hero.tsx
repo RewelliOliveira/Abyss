@@ -83,7 +83,7 @@ export function Hero() {
         </div>
       </div>
       <SeagullFlock className="z-5 h-[58%]" />
-      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 top-[64%] z-15 bg-ocean-surface" />
+      <div data-waterline aria-hidden="true" className="absolute inset-x-0 bottom-0 top-[64%] z-15 bg-ocean-surface" />
       <GodRays fadeTargetId="sunlight" className="top-[64%] z-15 h-[calc(36%+110svh)]" />
 
       <div

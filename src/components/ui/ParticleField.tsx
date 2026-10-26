@@ -6,6 +6,11 @@ import { startParticleField, type ParticleBudget } from '@/lib/particles'
 const desktopBudget: ParticleBudget = { bubbles: 70, snow: 160 }
 const mobileBudget: ParticleBudget = { bubbles: 28, snow: 60 }
 
+function waterlineY(): number {
+  const water = document.querySelector('[data-waterline]')
+  return water ? water.getBoundingClientRect().top : Number.NEGATIVE_INFINITY
+}
+
 export function ParticleField() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -16,7 +21,7 @@ export function ParticleField() {
     media.add({ motionOk: MEDIA.motionOk, mobile: MEDIA.mobile }, (context) => {
       const { motionOk, mobile } = context.conditions ?? {}
       if (!motionOk) return
-      return startParticleField(canvas, mobile ? mobileBudget : desktopBudget)
+      return startParticleField(canvas, mobile ? mobileBudget : desktopBudget, waterlineY)
     })
     return () => media.revert()
   })

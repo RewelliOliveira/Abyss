@@ -50,7 +50,11 @@ function currentScroll(): number {
   return ScrollSmoother.get()?.scrollTop() ?? window.scrollY
 }
 
-export function startParticleField(canvas: HTMLCanvasElement, budget: ParticleBudget): () => void {
+export function startParticleField(
+  canvas: HTMLCanvasElement,
+  budget: ParticleBudget,
+  waterlineY: () => number,
+): () => void {
   const context = canvas.getContext('2d')
   if (!context) return () => {}
   const foam = getComputedStyle(document.documentElement).getPropertyValue('--color-foam').trim()
@@ -90,6 +94,7 @@ export function startParticleField(canvas: HTMLCanvasElement, budget: ParticleBu
       clamp01((depth - PARTICLES.snowStartDepth) / (PARTICLES.snowFullDepth - PARTICLES.snowStartDepth)) *
       PARTICLES.snowOpacity
 
+    const waterline = waterlineY()
     context!.clearRect(0, 0, width, height)
     context!.fillStyle = foam
     context!.strokeStyle = foam
@@ -101,6 +106,7 @@ export function startParticleField(canvas: HTMLCanvasElement, budget: ParticleBu
       wrap(particle)
       const alpha = particle.kind === 'bubble' ? bubbleAlpha : snowAlpha
       if (alpha < 0.01) continue
+      if (particle.kind === 'bubble' && particle.y < waterline) continue
       context!.globalAlpha = alpha
       context!.beginPath()
       context!.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2)
