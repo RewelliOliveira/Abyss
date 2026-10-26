@@ -1,10 +1,10 @@
 import { useRef } from 'react'
+import { Footer } from '@/components/sections/Footer'
 import { Hero } from '@/components/sections/Hero'
 import { TrenchFloor } from '@/components/sections/TrenchFloor'
 import { ZoneSection } from '@/components/sections/ZoneSection'
-import { DiveGuide } from '@/components/ui/DiveGuide'
+import { DiveHud } from '@/components/ui/DiveHud'
 import { GlowFilters } from '@/components/ui/GlowFilters'
-import { InstrumentPanel } from '@/components/ui/InstrumentPanel'
 import { ParticleField } from '@/components/ui/ParticleField'
 import { zones } from '@/data/zones'
 import { useLanternTracking } from '@/hooks/useLanternTracking'
@@ -20,8 +20,7 @@ export default function App() {
     <>
       <GlowFilters />
       <ParticleField />
-      <DiveGuide />
-      <InstrumentPanel />
+      <DiveHud exitTargetId="credits" />
       <div ref={wrapperRef} id="smooth-wrapper" className="relative z-10">
         <div ref={contentRef} id="smooth-content">
           <main id="main">
@@ -31,6 +30,7 @@ export default function App() {
             ))}
             <TrenchFloor />
           </main>
+          <Footer />
         </div>
       </div>
     </>
