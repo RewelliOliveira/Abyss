@@ -19,3 +19,9 @@ export function formatLightPercent(percent: number): string {
   if (percent > 0) return '<0.1%'
   return '0%'
 }
+
+const lengthFormat = new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 })
+
+export function formatLength(meters: number, unit: string): string {
+  return `${lengthFormat.format(meters)} ${unit}`
+}

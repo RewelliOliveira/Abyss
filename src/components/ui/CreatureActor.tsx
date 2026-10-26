@@ -1,7 +1,9 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { creatureArt } from '@/components/creatures/registry'
+import { CreaturePopover } from '@/components/ui/CreaturePopover'
 import { GlowHalo } from '@/components/ui/GlowHalo'
-import { creatureTraits } from '@/data/creatures'
+import { creatureProfiles, creatureTraits } from '@/data/creatures'
+import { useCreaturePopover } from '@/hooks/useCreaturePopover'
 import { measurePartAnchors, type Anchor } from '@/lib/svg-anchors'
 import type { ArtLayer } from '@/types/art'
 import type { CreaturePlacement } from '@/types/ocean'
@@ -18,15 +20,21 @@ function facesAgainstSwim(placement: CreaturePlacement): boolean {
   return facing !== placement.swim
 }
 
+
 export function CreatureActor({ placement, layer }: CreatureActorProps) {
   const Art = creatureArt[placement.kind]
   const visibility = placement.desktopOnly ? 'hidden md:block' : ''
   const mirror = facesAgainstSwim(placement) ? '-scale-x-100' : ''
   const { glow } = creatureTraits[placement.kind]
+  const profile = layer === 'body' ? creatureProfiles[placement.kind] : undefined
+  const popoverId = `${placement.id}-profile`
+  const artRef = useRef<HTMLDivElement>(null)
   const [haloAnchors, setHaloAnchors] = useState<Anchor[]>([])
+  const { open, handlers } = useCreaturePopover()
 
   const measureGlow = useCallback(
     (art: HTMLDivElement | null) => {
+      artRef.current = art
       const svg = art?.querySelector('svg')
       if (svg && glow) setHaloAnchors(measurePartAnchors(svg, glow.part, true))
     },
@@ -40,7 +48,13 @@ export function CreatureActor({ placement, layer }: CreatureActorProps) {
       style={{ top: `${placement.top}%`, left: `${placement.left}%`, width: placement.width }}
     >
       <div data-ambient={placement.id}>
-        <div data-turn>
+        <div
+          data-turn
+          tabIndex={profile ? (placement.label ? 0 : -1) : undefined}
+          aria-describedby={profile ? popoverId : undefined}
+          className={profile ? 'cursor-help rounded-panel [&_svg_*]:pointer-events-auto' : undefined}
+          {...(profile ? handlers : {})}
+        >
           <div ref={measureGlow} className={`relative ${mirror}`}>
             <Art label={layer === 'body' ? placement.label : undefined} className="block h-auto w-full" />
             {glow &&
@@ -50,6 +64,7 @@ export function CreatureActor({ placement, layer }: CreatureActorProps) {
           </div>
         </div>
       </div>
+      {profile && <CreaturePopover id={popoverId} profile={profile} anchorRef={artRef} open={open} />}
     </div>
   )
 }

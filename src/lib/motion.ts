@@ -21,6 +21,9 @@ export const MOTION = {
   headlightSwitch: 0.9,
   lanternFollow: 0.12,
   mobileDistanceScale: 0.5,
+  popoverFade: 0.25,
+  popoverGap: 12,
+  popoverEdge: 16,
 } as const
 
 export const MEDIA = {

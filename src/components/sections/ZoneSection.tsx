@@ -35,7 +35,7 @@ export function ZoneSection({ zone }: ZoneSectionProps) {
           <CreatureLayer creatures={glowingCreatures} layer="glow" className="z-20" />
         </>
       )}
-      <div className="relative z-30 mx-auto flex max-w-content justify-end px-gutter py-section">
+      <div className="pointer-events-none relative z-30 mx-auto flex max-w-content justify-end px-gutter py-section">
         <ZonePanel zone={zone} headingId={headingId} />
       </div>
     </section>

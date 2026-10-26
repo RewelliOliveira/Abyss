@@ -80,3 +80,16 @@ export interface DiveReading {
   temperatureC: number
   lightPercent: number
 }
+
+export interface CreatureProfile {
+  name: string
+  scientificName: string
+  maxLength: number
+  depth: DepthRange
+  fact: string
+}
+
+export interface CreatureProfileLabels {
+  length: string
+  depth: string
+}

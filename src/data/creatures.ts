@@ -1,4 +1,4 @@
-import type { CreatureKind, CreatureTraits } from '@/types/ocean'
+import type { CreatureKind, CreatureProfile, CreatureProfileLabels, CreatureTraits } from '@/types/ocean'
 
 export const creatureTraits: Record<CreatureKind, CreatureTraits> = {
   'research-ship': { facing: 'right' },
@@ -17,4 +17,103 @@ export const creatureTraits: Record<CreatureKind, CreatureTraits> = {
   'giant-isopod': { facing: 'right' },
   snailfish: { facing: 'right' },
   seafloor: { facing: 'front' },
+}
+
+export const creatureProfileLabels: CreatureProfileLabels = {
+  length: 'Length',
+  depth: 'Depth',
+}
+
+export const creatureProfiles: Partial<Record<CreatureKind, CreatureProfile>> = {
+  'sea-turtle': {
+    name: 'Green Sea Turtle',
+    scientificName: 'Chelonia mydas',
+    maxLength: 1.5,
+    depth: { from: 0, to: 290 },
+    fact: 'Adults graze on seagrass and algae, which tints the fat under their shell green.',
+  },
+  fish: {
+    name: 'Atlantic Herring',
+    scientificName: 'Clupea harengus',
+    maxLength: 0.45,
+    depth: { from: 0, to: 360 },
+    fact: 'Schools can hold millions of fish and stretch for kilometers.',
+  },
+  'manta-ray': {
+    name: 'Giant Manta Ray',
+    scientificName: 'Mobula birostris',
+    maxLength: 7,
+    depth: { from: 0, to: 1000 },
+    fact: 'It has the largest brain-to-body ratio of any fish and filters plankton as it glides.',
+  },
+  'hammerhead-shark': {
+    name: 'Great Hammerhead',
+    scientificName: 'Sphyrna mokarran',
+    maxLength: 6.1,
+    depth: { from: 1, to: 300 },
+    fact: 'Its wide head spreads out electric sensors that find stingrays buried in sand.',
+  },
+  jellyfish: {
+    name: 'Mauve Stinger',
+    scientificName: 'Pelagia noctiluca',
+    maxLength: 0.1,
+    depth: { from: 0, to: 1400 },
+    fact: 'It glows when disturbed and has no brain, heart or bones.',
+  },
+  squid: {
+    name: 'Humboldt Squid',
+    scientificName: 'Dosidicus gigas',
+    maxLength: 1.5,
+    depth: { from: 200, to: 700 },
+    fact: 'It flashes red and white across its skin to signal other squid while hunting in packs.',
+  },
+  swordfish: {
+    name: 'Swordfish',
+    scientificName: 'Xiphias gladius',
+    maxLength: 4.5,
+    depth: { from: 0, to: 800 },
+    fact: 'Special tissue warms its eyes and brain, sharpening vision in cold, dark water.',
+  },
+  lanternfish: {
+    name: 'Lanternfish',
+    scientificName: 'Family Myctophidae',
+    maxLength: 0.15,
+    depth: { from: 300, to: 1500 },
+    fact: 'Every night they rise hundreds of meters to feed, one of the largest migrations on Earth.',
+  },
+  hatchetfish: {
+    name: 'Silver Hatchetfish',
+    scientificName: 'Argyropelecus aculeatus',
+    maxLength: 0.08,
+    depth: { from: 100, to: 600 },
+    fact: 'Glowing spots on its belly match the faint light from above, hiding its silhouette.',
+  },
+  anglerfish: {
+    name: 'Humpback Anglerfish',
+    scientificName: 'Melanocetus johnsonii',
+    maxLength: 0.18,
+    depth: { from: 100, to: 4500 },
+    fact: 'Its lure glows with bacteria that live inside it, drawing prey toward its jaws.',
+  },
+  'gulper-eel': {
+    name: 'Gulper Eel',
+    scientificName: 'Eurypharynx pelecanoides',
+    maxLength: 1,
+    depth: { from: 500, to: 3000 },
+    fact: 'Its loosely hinged mouth opens like a pelican pouch to swallow prey and water at once.',
+  },
+  'giant-isopod': {
+    name: 'Giant Isopod',
+    scientificName: 'Bathynomus giganteus',
+    maxLength: 0.5,
+    depth: { from: 170, to: 2140 },
+    fact: 'A scavenger of the seafloor that can survive years between meals.',
+  },
+  snailfish: {
+    name: 'Mariana Snailfish',
+    scientificName: 'Pseudoliparis swirei',
+    maxLength: 0.29,
+    depth: { from: 6900, to: 8000 },
+    fact: 'One of the deepest fish ever found, with a soft body and bones that bend under crushing pressure.',
+  },
 }
