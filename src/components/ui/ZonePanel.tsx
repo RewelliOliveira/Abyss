@@ -41,7 +41,7 @@ export function ZonePanel({ zone, headingId }: ZonePanelProps) {
   return (
     <div
       ref={panelRef}
-      className="relative w-full max-w-lg rounded-panel border border-hairline bg-scrim p-6 shadow-panel backdrop-blur-sm md:p-8"
+      className="relative w-full max-w-lg rounded-panel border border-hairline bg-panel p-6 shadow-panel md:p-8"
     >
       <p data-eyebrow className="font-mono text-label uppercase tracking-widest text-mist">
         <span>{formatDepthRange(zone.depth.from, zone.depth.to)}</span>

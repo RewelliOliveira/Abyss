@@ -50,7 +50,7 @@ export function InstrumentPanel() {
     <aside
       ref={panelRef}
       aria-label={instrumentLabels.panel}
-      className="pointer-events-none fixed inset-x-3 bottom-3 z-40 rounded-panel border border-hairline bg-scrim px-4 py-3 shadow-panel backdrop-blur-md md:inset-x-auto md:bottom-6 md:left-6 md:w-72 md:px-5 md:py-4"
+      className="pointer-events-none fixed inset-x-3 bottom-3 z-40 rounded-panel border border-hairline bg-panel px-4 py-3 shadow-panel md:inset-x-auto md:bottom-6 md:left-6 md:w-72 md:px-5 md:py-4"
     >
       <p className="flex items-baseline justify-between gap-2 border-b border-hairline pb-2 font-mono text-2xs uppercase tracking-widest text-mist">
         <span>{instrumentLabels.zone}</span>

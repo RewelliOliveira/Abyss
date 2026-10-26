@@ -1,5 +1,27 @@
-import { gsap, ScrollSmoother } from '@/lib/gsap'
+import { gsap, ScrollSmoother, ScrollTrigger } from '@/lib/gsap'
 import { MEDIA, MOTION } from '@/lib/motion'
+
+export interface ViewportTopTracker {
+  top: () => number
+  stop: () => void
+}
+
+export function currentScroll(): number {
+  return ScrollSmoother.get()?.scrollTop() ?? window.scrollY
+}
+
+export function trackViewportTop(element: Element): ViewportTopTracker {
+  let documentTop = 0
+  function measure() {
+    documentTop = element.getBoundingClientRect().top + currentScroll()
+  }
+  measure()
+  ScrollTrigger.addEventListener('refresh', measure)
+  return {
+    top: () => documentTop - currentScroll(),
+    stop: () => ScrollTrigger.removeEventListener('refresh', measure),
+  }
+}
 
 function prefersReducedMotion(): boolean {
   return window.matchMedia(MEDIA.reducedMotion).matches

@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap'
 import { getLanternPosition } from '@/lib/lantern-store'
 import { MEDIA, MOTION } from '@/lib/motion'
+import { trackViewportTop } from '@/lib/scroll'
 
 interface LanternProps {
   fadeIn: boolean
@@ -21,12 +22,12 @@ export function Lantern({ fadeIn }: LanternProps) {
         gsap.set(beam, { xPercent: -50, yPercent: -50 })
         const setX = gsap.quickSetter(beam, 'x', 'px')
         const setY = gsap.quickSetter(beam, 'y', 'px')
+        const rootTop = trackViewportTop(root)
 
         function followLantern() {
-          const bounds = root!.getBoundingClientRect()
           const { x, y } = getLanternPosition()
-          setX(x - bounds.left)
-          setY(y - bounds.top)
+          setX(x)
+          setY(y - rootTop.top())
         }
 
         const visibility = ScrollTrigger.create({
@@ -53,6 +54,7 @@ export function Lantern({ fadeIn }: LanternProps) {
 
         return () => {
           visibility.kill()
+          rootTop.stop()
           gsap.ticker.remove(followLantern)
         }
       })
@@ -69,7 +71,7 @@ export function Lantern({ fadeIn }: LanternProps) {
     >
       <div
         ref={beamRef}
-        className="absolute left-0 top-0 size-[400vmax] bg-[radial-gradient(circle,transparent_0,transparent_var(--spacing-lantern),var(--color-darkness)_var(--spacing-lantern-edge))]"
+        className="absolute left-0 top-0 size-[220vmax] will-change-transform bg-[radial-gradient(circle,transparent_0,transparent_var(--spacing-lantern),var(--color-darkness)_var(--spacing-lantern-edge))]"
       />
     </div>
   )

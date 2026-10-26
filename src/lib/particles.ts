@@ -1,5 +1,6 @@
 import { getDepth } from '@/lib/dive-store'
-import { gsap, ScrollSmoother } from '@/lib/gsap'
+import { gsap } from '@/lib/gsap'
+import { currentScroll } from '@/lib/scroll'
 
 type ParticleKind = 'bubble' | 'snow'
 
@@ -46,10 +47,6 @@ function createParticle(kind: ParticleKind, width: number, height: number): Part
   }
 }
 
-function currentScroll(): number {
-  return ScrollSmoother.get()?.scrollTop() ?? window.scrollY
-}
-
 export function startParticleField(
   canvas: HTMLCanvasElement,
   budget: ParticleBudget,
@@ -62,6 +59,7 @@ export function startParticleField(
   let height = 0
   let lastScroll = currentScroll()
   let particles: Particle[] = []
+  let cleared = false
 
   function resize() {
     const ratio = Math.min(window.devicePixelRatio || 1, PARTICLES.maxPixelRatio)
@@ -93,6 +91,13 @@ export function startParticleField(
     const snowAlpha =
       clamp01((depth - PARTICLES.snowStartDepth) / (PARTICLES.snowFullDepth - PARTICLES.snowStartDepth)) *
       PARTICLES.snowOpacity
+
+    if (bubbleAlpha < 0.01 && snowAlpha < 0.01) {
+      if (!cleared) context!.clearRect(0, 0, width, height)
+      cleared = true
+      return
+    }
+    cleared = false
 
     const waterline = waterlineY()
     context!.clearRect(0, 0, width, height)
