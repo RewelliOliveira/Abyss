@@ -4,6 +4,8 @@ import { CreaturePopover } from '@/components/ui/CreaturePopover'
 import { GlowHalo } from '@/components/ui/GlowHalo'
 import { creatureProfiles, creatureTraits } from '@/data/creatures'
 import { useCreaturePopover } from '@/hooks/useCreaturePopover'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
+import { MEDIA } from '@/lib/motion'
 import { measurePartAnchors, type Anchor } from '@/lib/svg-anchors'
 import type { ArtLayer } from '@/types/art'
 import type { CreaturePlacement } from '@/types/ocean'
@@ -20,13 +22,13 @@ function facesAgainstSwim(placement: CreaturePlacement): boolean {
   return facing !== placement.swim
 }
 
-
 export function CreatureActor({ placement, layer }: CreatureActorProps) {
   const Art = creatureArt[placement.kind]
   const visibility = placement.desktopOnly ? 'hidden md:block' : ''
   const mirror = facesAgainstSwim(placement) ? '-scale-x-100' : ''
   const { glow } = creatureTraits[placement.kind]
-  const profile = layer === 'body' ? creatureProfiles[placement.kind] : undefined
+  const hasPointer = useMediaQuery(MEDIA.finePointer)
+  const profile = layer === 'body' && hasPointer ? creatureProfiles[placement.kind] : undefined
   const popoverId = `${placement.id}-profile`
   const artRef = useRef<HTMLDivElement>(null)
   const [haloAnchors, setHaloAnchors] = useState<Anchor[]>([])
