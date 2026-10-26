@@ -3,17 +3,14 @@ import { Seafloor } from '@/components/creatures/Seafloor'
 import { ActionButton } from '@/components/ui/ActionButton'
 import { Lantern } from '@/components/ui/Lantern'
 import { CHALLENGER_DEEP_DEPTH, trench } from '@/data/trench'
-import { useAmbientMotion } from '@/hooks/useAmbientMotion'
 import { formatInteger } from '@/lib/format'
 import { gsap, SplitText, useGSAP } from '@/lib/gsap'
 import { MEDIA, MOTION } from '@/lib/motion'
 import { metersToFeet } from '@/lib/ocean-physics'
-import { seafloorTargets } from '@/lib/seafloor-ambient'
 
 export function TrenchFloor() {
   const sectionRef = useRef<HTMLElement>(null)
   const headingId = `${trench.id}-title`
-  useAmbientMotion(sectionRef, seafloorTargets)
 
   useGSAP(
     () => {
@@ -34,11 +31,6 @@ export function TrenchFloor() {
         })
         reveal.from('[data-trench-copy]', { autoAlpha: 0, y: MOTION.dist / 2, stagger: MOTION.stagger * 3 }, 0.7)
         reveal.from('[data-trench-cta]', { autoAlpha: 0, scale: 0.9, ease: MOTION.easePop, duration: MOTION.fast }, 1.2)
-        gsap.from('[data-seafloor]', {
-          yPercent: 30,
-          ease: 'none',
-          scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom bottom', scrub: MOTION.scrub },
-        })
       })
       return () => media.revert()
     },
@@ -53,7 +45,6 @@ export function TrenchFloor() {
       className="relative isolate flex min-h-svh flex-col justify-center overflow-clip bg-ocean-hadal"
     >
       <div
-        data-seafloor
         className="pointer-events-none absolute bottom-0 left-1/2 z-0 w-[max(100%,56rem)] -translate-x-1/2"
       >
         <Seafloor label={trench.seafloorLabel} className="block h-auto w-full" />

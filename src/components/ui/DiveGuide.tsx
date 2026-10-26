@@ -4,19 +4,15 @@ import { GlowHalo } from '@/components/ui/GlowHalo'
 import { HeadlightBeam } from '@/components/ui/HeadlightBeam'
 import { SubBubbles } from '@/components/ui/SubBubbles'
 import { DARKNESS_DEPTH } from '@/data/instruments'
-import { creatureMotion } from '@/data/motion-presets'
-import { useAmbientMotion, type AmbientTarget } from '@/hooks/useAmbientMotion'
 import { subscribeToDepth } from '@/lib/dive-store'
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap'
 import { MEDIA, MOTION } from '@/lib/motion'
 import { measurePartAnchors, type Anchor } from '@/lib/svg-anchors'
 
-const guideTargets: AmbientTarget[] = [{ selector: '[data-sub-float]', preset: creatureMotion.submarine, seed: 23 }]
 const LIGHTS = '[data-headlight-beams], [data-headlight-glow]'
 
 export function DiveGuide() {
   const guideRef = useRef<HTMLDivElement>(null)
-  useAmbientMotion(guideRef, guideTargets, { alwaysActive: true })
   const [lensAnchors, setLensAnchors] = useState<Anchor[]>([])
 
   const measureLenses = useCallback((art: HTMLDivElement | null) => {
@@ -98,7 +94,7 @@ export function DiveGuide() {
       className="pointer-events-none fixed bottom-36 right-3 z-30 w-16 md:bottom-auto md:left-[4vw] md:right-auto md:top-[28vh] md:w-[clamp(7rem,11vw,10rem)]"
     >
       <div data-sub-body>
-        <div data-sub-float>
+        <div>
           <div className="relative -scale-x-100 md:scale-x-100">
             <svg
               viewBox="0 0 10 1000"

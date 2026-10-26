@@ -49,10 +49,11 @@ src/
   touch or screen center) and a second `CreatureLayer` with `layer="glow"` above the darkness that only
   shows the bioluminescent SVG part plus its pre-drawn `GlowHalo`, so lures and tail tips glow in the dark.
   Glow is never an animated SVG filter: halos are radial gradients animated only in opacity.
-- Creature DOM layers: `[data-actor]` (scroll drift and parallax, `useCreatureMotion`) >
-  `[data-ambient]` (idle motion, `useAmbientMotion`) > `[data-turn]` (school turns) > mirror > art.
-  Never animate the same element from both systems.
-- Ambient motion: presets per species/scenery in `src/data/motion-presets.ts` (typed in `src/types/motion.ts`),
+- Underwater art (creatures, seafloor, submarine body) is static: no drift, parallax or idle motion.
+  Only the sky scene (sun, gulls, waves, research ship) animates its SVGs.
+- Never animate an element that carries Tailwind `translate-*` positioning: GSAP folds it into `x`/`y`
+  and later tweens overwrite it. Position with an outer wrapper and animate an inner element.
+- Ambient motion (sky scene only): presets per species/scenery in `src/data/motion-presets.ts` (typed in `src/types/motion.ts`),
   behaviors in `src/lib/ambient-body.ts` (wander, rock, school, pulse, jet, crawl, sway, twitch) and
   secondary part motion in `src/lib/ambient-parts.ts` (wag, flap, sway, spin, blink, flicker, turn, breathe).
   Agents are deterministic per element (seeded noise) and run on one `gsap.ticker` per scene via
