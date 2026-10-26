@@ -36,7 +36,7 @@ export function CreatureActor({ placement, layer }: CreatureActorProps) {
     (art: HTMLDivElement | null) => {
       artRef.current = art
       const svg = art?.querySelector('svg')
-      if (svg && glow) setHaloAnchors(measurePartAnchors(svg, glow.part, true))
+      if (svg && glow) setHaloAnchors(measurePartAnchors(svg, glow.part, !glow.scattered))
     },
     [glow],
   )

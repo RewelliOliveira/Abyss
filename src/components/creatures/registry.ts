@@ -9,6 +9,9 @@ import { Squid } from '@/components/creatures/Squid'
 import { Swordfish } from '@/components/creatures/Swordfish'
 import { Lanternfish } from '@/components/creatures/Lanternfish'
 import { Hatchetfish } from '@/components/creatures/Hatchetfish'
+import { SpermWhale } from '@/components/creatures/SpermWhale'
+import { Grenadier } from '@/components/creatures/Grenadier'
+import { Viperfish } from '@/components/creatures/Viperfish'
 import { Anglerfish } from '@/components/creatures/Anglerfish'
 import { GulperEel } from '@/components/creatures/GulperEel'
 import { GiantIsopod } from '@/components/creatures/GiantIsopod'
@@ -30,6 +33,9 @@ export const creatureArt: Record<CreatureKind, ComponentType<CreatureArtProps>> 
   swordfish: Swordfish,
   lanternfish: Lanternfish,
   hatchetfish: Hatchetfish,
+  'sperm-whale': SpermWhale,
+  grenadier: Grenadier,
+  viperfish: Viperfish,
   anglerfish: Anglerfish,
   'gulper-eel': GulperEel,
   'giant-isopod': GiantIsopod,

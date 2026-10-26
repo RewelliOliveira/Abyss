@@ -20,7 +20,7 @@ export default defineConfig({
         codeSplitting: {
           groups: [
             { name: 'seafloor', test: /seafloor\.svg/ },
-            { name: 'sea-life', test: /assets[/\\]svg[/\\](sea-turtle|fish|dolphin|manta-ray|hammerhead-shark|jellyfish|squid|swordfish|lanternfish|hatchetfish|anglerfish|gulper-eel|giant-isopod|snailfish)/ },
+            { name: 'sea-life', test: /assets[/\\]svg[/\\](sea-turtle|fish|dolphin|manta-ray|hammerhead-shark|jellyfish|squid|swordfish|lanternfish|hatchetfish|sperm-whale|grenadier|viperfish|anglerfish|gulper-eel|giant-isopod|snailfish)/ },
             { name: 'illustrations', test: /assets[/\\]svg/ },
             { name: 'vendor', test: /node_modules/ },
           ],

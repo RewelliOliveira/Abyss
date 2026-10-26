@@ -12,6 +12,9 @@ export type CreatureKind =
   | 'swordfish'
   | 'lanternfish'
   | 'hatchetfish'
+  | 'sperm-whale'
+  | 'grenadier'
+  | 'viperfish'
   | 'anglerfish'
   | 'gulper-eel'
   | 'giant-isopod'
@@ -44,6 +47,7 @@ export interface CreaturePlacement {
 export interface GlowPart {
   part: string
   color: GlowColor
+  scattered?: boolean
 }
 
 export interface CreatureTraits {
