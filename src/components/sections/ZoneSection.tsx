@@ -28,7 +28,7 @@ export function ZoneSection({ zone }: ZoneSectionProps) {
       id={zone.id}
       aria-labelledby={headingId}
       data-zone={zone.id}
-      className={`relative isolate min-h-zone overflow-clip ${zone.backgroundClass}`}
+      className={`relative isolate -mb-px min-h-zone overflow-clip ${zone.backgroundClass}`}
     >
       <CreatureLayer creatures={zone.creatures} layer="body" className="z-0" />
       {zone.dark && (
