@@ -29,7 +29,7 @@ export function ZoneSection({ zone }: ZoneSectionProps) {
       <CreatureLayer creatures={zone.creatures} layer="body" className="z-0" />
       {zone.dark && (
         <>
-          <div className="absolute inset-0 z-10">
+          <div className="pointer-events-none absolute inset-0 z-10">
             <Lantern fadeIn={zone.id === 'midnight'} />
           </div>
           <CreatureLayer creatures={glowingCreatures} layer="glow" className="z-20" />
