@@ -1,0 +1,94 @@
+import { useRef } from 'react'
+import { Submarine } from '@/components/creatures/Submarine'
+import { HeadlightBeam } from '@/components/ui/HeadlightBeam'
+import { DARKNESS_DEPTH } from '@/data/instruments'
+import { subscribeToDepth } from '@/lib/dive-store'
+import { gsap, useGSAP } from '@/lib/gsap'
+import { glowFilterUrl } from '@/lib/glow'
+import { MEDIA, MOTION } from '@/lib/motion'
+
+export function DiveGuide() {
+  const guideRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(
+    () => {
+      const guide = guideRef.current
+      if (!guide) return
+      const headlights = guide.querySelectorAll<SVGElement>('[data-part="headlights"]')
+      const propeller = guide.querySelectorAll<SVGElement>('[data-part="propeller"]')
+      gsap.set(headlights, { attr: { filter: glowFilterUrl('cyan') }, opacity: 0.35 })
+
+      const media = gsap.matchMedia()
+      media.add({ motionOk: MEDIA.motionOk, reducedMotion: MEDIA.reducedMotion }, (context) => {
+        const { motionOk } = context.conditions ?? {}
+        const switchDuration = motionOk ? MOTION.headlightSwitch : 0
+        let lightsOn = false
+
+        const stopListening = subscribeToDepth((depth) => {
+          const shouldShine = depth >= DARKNESS_DEPTH
+          if (shouldShine === lightsOn) return
+          lightsOn = shouldShine
+          gsap.to('[data-headlight-beam]', { autoAlpha: shouldShine ? 1 : 0, duration: switchDuration, overwrite: true })
+          gsap.to(headlights, { opacity: shouldShine ? 1 : 0.35, duration: switchDuration, overwrite: true })
+        })
+
+        if (!motionOk) return stopListening
+
+        const surface = document.getElementById('surface')
+        const descent = gsap.timeline({
+          scrollTrigger: { trigger: surface, start: 'top top', end: 'bottom top', scrub: MOTION.scrub },
+        })
+        descent.fromTo('[data-sub-body]', { y: '-70vh', autoAlpha: 0 }, { y: 0, autoAlpha: 1, ease: 'none' }, 0)
+        descent.fromTo('[data-cable]', { drawSVG: '0% 0%' }, { drawSVG: '0% 100%', ease: 'none' }, 0)
+
+        gsap.to('[data-sub-float]', {
+          y: MOTION.floatDistance,
+          rotation: -2,
+          duration: MOTION.floatCycle,
+          ease: MOTION.easeInOut,
+          repeat: -1,
+          yoyo: true,
+        })
+        gsap.to(propeller, {
+          scaleY: 0.25,
+          transformOrigin: '50% 50%',
+          duration: 0.12,
+          ease: 'none',
+          repeat: -1,
+          yoyo: true,
+        })
+        return stopListening
+      })
+      return () => media.revert()
+    },
+    { scope: guideRef },
+  )
+
+  return (
+    <div
+      ref={guideRef}
+      aria-hidden="true"
+      className="pointer-events-none fixed bottom-36 right-3 z-30 w-16 md:bottom-auto md:left-[4vw] md:right-auto md:top-[28vh] md:w-[clamp(7rem,11vw,10rem)]"
+    >
+      <div data-sub-body>
+        <div data-sub-float>
+          <div className="relative -scale-x-100 md:scale-x-100">
+            <svg
+              viewBox="0 0 10 1000"
+              preserveAspectRatio="none"
+              className="absolute bottom-[92%] left-[46%] h-[120vh] w-2 overflow-visible"
+            >
+              <path
+                data-cable
+                d="M5 0 C 7 300, 3 650, 5 1000"
+                className="fill-none stroke-mist [stroke-width:2]"
+              />
+            </svg>
+            <HeadlightBeam />
+            <Submarine className="relative block h-auto w-full" />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}

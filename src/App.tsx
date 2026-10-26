@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { Hero } from '@/components/sections/Hero'
 import { ZoneSection } from '@/components/sections/ZoneSection'
+import { DiveGuide } from '@/components/ui/DiveGuide'
 import { GlowFilters } from '@/components/ui/GlowFilters'
 import { InstrumentPanel } from '@/components/ui/InstrumentPanel'
 import { zones } from '@/data/zones'
@@ -16,16 +17,17 @@ export default function App() {
   return (
     <>
       <GlowFilters />
+      <DiveGuide />
       <InstrumentPanel />
       <div ref={wrapperRef} id="smooth-wrapper" className="relative z-10">
-      <div ref={contentRef} id="smooth-content">
-        <main id="main">
-          <Hero />
-          {zones.map((zone) => (
-            <ZoneSection key={zone.id} zone={zone} />
-          ))}
-        </main>
-      </div>
+        <div ref={contentRef} id="smooth-content">
+          <main id="main">
+            <Hero />
+            {zones.map((zone) => (
+              <ZoneSection key={zone.id} zone={zone} />
+            ))}
+          </main>
+        </div>
       </div>
     </>
   )
