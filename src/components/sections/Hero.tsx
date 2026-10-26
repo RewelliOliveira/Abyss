@@ -1,15 +1,21 @@
 import { useRef } from 'react'
 import { ResearchShip } from '@/components/creatures/ResearchShip'
+import { Sun } from '@/components/creatures/Sun'
 import { ActionButton } from '@/components/ui/ActionButton'
+import { GodRays } from '@/components/ui/GodRays'
 import { WaveLine } from '@/components/ui/WaveLine'
 import { hero } from '@/data/hero'
+import { sceneryMotion } from '@/data/motion-presets'
+import { sunLabel } from '@/data/sky'
+import { useAmbientMotion, type AmbientTarget } from '@/hooks/useAmbientMotion'
 import { gsap, SplitText, useGSAP } from '@/lib/gsap'
 import { MEDIA, MOTION } from '@/lib/motion'
 
-const LIGHT_RAYS = ['left-[12%] w-16', 'left-[34%] w-24', 'left-[58%] w-12', 'left-[78%] w-20']
+const skyTargets: AmbientTarget[] = [{ selector: '[data-sun-art]', preset: sceneryMotion.sun, seed: 11 }]
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
+  useAmbientMotion(sectionRef, skyTargets)
 
   useGSAP(
     () => {
@@ -45,14 +51,6 @@ export function Hero() {
         })
         gsap.to('[data-wave="front"]', { xPercent: -50, duration: MOTION.floatCycle * 2.5, ease: 'none', repeat: -1 })
         gsap.to('[data-wave="back"]', { xPercent: -50, duration: MOTION.floatCycle * 4, ease: 'none', repeat: -1 })
-        gsap.to('[data-light-ray]', {
-          autoAlpha: 0.25,
-          duration: MOTION.floatCycle / 2,
-          ease: MOTION.easeInOut,
-          repeat: -1,
-          yoyo: true,
-          stagger: { each: MOTION.stagger * 6, from: 'random' },
-        })
         gsap.to('[data-hero-hint-arrow]', { y: 8, duration: MOTION.fast, ease: MOTION.easeInOut, repeat: -1, yoyo: true })
 
         const exit = gsap.timeline({
@@ -60,6 +58,7 @@ export function Hero() {
         })
         exit.to('[data-hero-copy]', { yPercent: -30, autoAlpha: 0, ease: 'none' }, 0)
         exit.to('[data-hero-ship]', { y: -distance * 2, ease: 'none' }, 0)
+        exit.to('[data-sun]', { yPercent: -220, ease: 'none' }, 0)
       })
       return () => media.revert()
     },
@@ -71,18 +70,19 @@ export function Hero() {
       ref={sectionRef}
       id="surface"
       aria-labelledby="surface-title"
-      className="relative isolate flex min-h-svh flex-col overflow-clip"
+      className="relative isolate z-10 flex min-h-svh flex-col overflow-x-clip"
     >
       <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[64%] bg-linear-to-b from-sky-low to-sky-high" />
-      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 top-[64%] z-15 bg-ocean-surface">
-        {LIGHT_RAYS.map((ray) => (
-          <span
-            key={ray}
-            data-light-ray
-            className={`absolute top-0 h-full -skew-x-12 bg-linear-to-b from-foam/40 to-transparent opacity-60 ${ray}`}
-          />
-        ))}
+      <div
+        data-sun
+        className="pointer-events-none absolute right-[5%] top-[4%] w-[clamp(4.5rem,13vw,11rem)] md:right-[12%] md:top-[7%]"
+      >
+        <div data-sun-art>
+          <Sun label={sunLabel} className="block h-auto w-full" />
+        </div>
       </div>
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 top-[64%] z-15 bg-ocean-surface" />
+      <GodRays fadeTargetId="sunlight" className="top-[64%] z-15 h-[calc(36%+110svh)]" />
 
       <div
         data-hero-ship
