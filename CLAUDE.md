@@ -27,11 +27,11 @@ src/
   assets/           original illustrations (never modify)
   assets/svg/       traced + optimized SVGs (kebab-case, English names)
   components/
-    sections/       page sections (hero, zones, trench floor, footer)
+    sections/       page sections (hero, zones, trench floor)
     ui/             reusable UI (instrument panel, buttons, particles, lantern)
     creatures/      one component per creature / illustration
   hooks/            reusable logic (e.g. depth from scroll)
-  data/             typed content: zones, creatures, facts, sources, copy
+  data/             typed content: zones, creatures, facts, copy
   lib/              GSAP setup, motion config, utilities
   types/            shared TypeScript types
   styles/           theme tokens
@@ -43,8 +43,8 @@ src/
   depth range (`useZoneDepth`); instruments, headlights and particles subscribe to it.
 - Page background: every zone paints a vertical gradient from its color to the next one
   (`backgroundClass` in `src/data/zones.ts`), so the gradient is continuous and scroll-driven.
-- Fixed layers (outside `#smooth-wrapper`): `ParticleField` (canvas, z-20) and `DiveHud`
-  (submarine guide + instrument panel, z-30), which fades out near the footer.
+- Fixed layers (outside `#smooth-wrapper`): `ParticleField` (canvas, z-20), `DiveGuide`
+  (submarine, z-30) and `InstrumentPanel` (z-40). The page ends at the `TrenchFloor` section.
 - Dark zones (`dark: true`) render a `Lantern` (darkness with a radial hole following the pointer,
   touch or screen center) and a second `CreatureLayer` with `layer="glow"` above the darkness that only
   shows the bioluminescent SVG part, so lures and eyes glow in the dark.

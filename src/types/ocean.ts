@@ -64,12 +64,6 @@ export interface TemperaturePoint {
   celsius: number
 }
 
-export interface Source {
-  label: string
-  publisher: string
-  url: string
-}
-
 export interface CallToAction {
   label: string
   targetId: string
