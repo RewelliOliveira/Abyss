@@ -3,6 +3,7 @@ import { ResearchShip } from '@/components/creatures/ResearchShip'
 import { Sun } from '@/components/creatures/Sun'
 import { ActionButton } from '@/components/ui/ActionButton'
 import { GodRays } from '@/components/ui/GodRays'
+import { SeagullFlock } from '@/components/ui/SeagullFlock'
 import { WaveLine } from '@/components/ui/WaveLine'
 import { hero } from '@/data/hero'
 import { sceneryMotion } from '@/data/motion-presets'
@@ -81,6 +82,7 @@ export function Hero() {
           <Sun label={sunLabel} className="block h-auto w-full" />
         </div>
       </div>
+      <SeagullFlock className="z-5 h-[58%]" />
       <div aria-hidden="true" className="absolute inset-x-0 bottom-0 top-[64%] z-15 bg-ocean-surface" />
       <GodRays fadeTargetId="sunlight" className="top-[64%] z-15 h-[calc(36%+110svh)]" />
 
