@@ -11,6 +11,7 @@ export function HeadlightBeam({ anchor }: HeadlightBeamProps) {
   return (
     <svg
       data-headlight-beam
+      data-halo="beam"
       aria-hidden="true"
       viewBox="0 0 400 200"
       preserveAspectRatio="none"

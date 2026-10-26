@@ -5,13 +5,14 @@ type SceneryKind = 'sun' | 'sea-lily' | 'sea-pen' | 'sponge' | 'anemone' | 'sea-
 
 export const creatureMotion: Record<CreatureKind, AmbientPreset> = {
   'research-ship': {
+    origin: '50% 100%',
     body: { kind: 'rock', rotation: [0.8, 2.2], lift: [3, 8], cycle: [4.5, 6.5] },
   },
   submarine: {
     body: { kind: 'wander', x: 6, y: 14, rotation: 2.5, speed: 0.16 },
     parts: [
       { part: 'propeller', motion: 'spin', amount: 0.22, cycle: [0.22, 0.3] },
-      { part: 'headlights', motion: 'flicker', amount: 0.3, cycle: [1, 1] },
+      { part: 'beam', motion: 'flicker', amount: 0.3, cycle: [1, 1] },
     ],
   },
   'sea-turtle': {
@@ -31,7 +32,7 @@ export const creatureMotion: Record<CreatureKind, AmbientPreset> = {
   },
   squid: {
     body: { kind: 'jet', interval: [3.5, 5.5], thrust: [50, 80], squash: 0.16, driftBack: 0.35 },
-    parts: [{ part: 'arms', motion: 'wag', amount: 6, cycle: [1.6, 2.2], lag: 0.8, origin: '0% 50%' }],
+    parts: [{ part: 'arms', motion: 'wag', amount: 6, cycle: [1.6, 2.2], lag: 0.8, origin: '0% 30%' }],
   },
   anglerfish: {
     body: { kind: 'wander', x: 10, y: 8, rotation: 2, speed: 0.07, lean: 0.3 },

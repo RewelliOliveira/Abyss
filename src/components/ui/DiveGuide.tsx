@@ -1,15 +1,22 @@
 import { useCallback, useRef, useState } from 'react'
 import { Submarine } from '@/components/creatures/Submarine'
+import { GlowHalo } from '@/components/ui/GlowHalo'
 import { HeadlightBeam } from '@/components/ui/HeadlightBeam'
+import { SubBubbles } from '@/components/ui/SubBubbles'
 import { DARKNESS_DEPTH } from '@/data/instruments'
+import { creatureMotion } from '@/data/motion-presets'
+import { useAmbientMotion, type AmbientTarget } from '@/hooks/useAmbientMotion'
 import { subscribeToDepth } from '@/lib/dive-store'
 import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap'
-import { glowFilterUrl } from '@/lib/glow'
 import { MEDIA, MOTION } from '@/lib/motion'
 import { measurePartAnchors, type Anchor } from '@/lib/svg-anchors'
 
+const guideTargets: AmbientTarget[] = [{ selector: '[data-sub-float]', preset: creatureMotion.submarine, seed: 23 }]
+const LIGHTS = '[data-headlight-beams], [data-headlight-glow]'
+
 export function DiveGuide() {
   const guideRef = useRef<HTMLDivElement>(null)
+  useAmbientMotion(guideRef, guideTargets, { alwaysActive: true })
   const [lensAnchors, setLensAnchors] = useState<Anchor[]>([])
 
   const measureLenses = useCallback((art: HTMLDivElement | null) => {
@@ -22,8 +29,7 @@ export function DiveGuide() {
       const guide = guideRef.current
       if (!guide) return
       const headlights = guide.querySelectorAll<SVGElement>('[data-part="headlights"]')
-      const propeller = guide.querySelectorAll<SVGElement>('[data-part="propeller"]')
-      gsap.set(headlights, { attr: { filter: glowFilterUrl('cyan') }, opacity: 0.35 })
+      gsap.set(headlights, { opacity: 0.35 })
 
       const media = gsap.matchMedia()
       media.add({ motionOk: MEDIA.motionOk, reducedMotion: MEDIA.reducedMotion }, (context) => {
@@ -35,7 +41,7 @@ export function DiveGuide() {
           const shouldShine = depth >= DARKNESS_DEPTH
           if (shouldShine === lightsOn) return
           lightsOn = shouldShine
-          gsap.to('[data-headlight-beams]', { autoAlpha: shouldShine ? 1 : 0, duration: switchDuration, overwrite: true })
+          gsap.to(LIGHTS, { autoAlpha: shouldShine ? 1 : 0, duration: switchDuration, overwrite: true })
           gsap.to(headlights, { opacity: shouldShine ? 1 : 0.35, duration: switchDuration, overwrite: true })
         })
 
@@ -60,21 +66,23 @@ export function DiveGuide() {
         descent.fromTo('[data-sub-body]', { y: '-70vh', autoAlpha: 0 }, { y: 0, autoAlpha: 1, ease: 'none' }, 0)
         descent.fromTo('[data-cable]', { drawSVG: '0% 0%' }, { drawSVG: '0% 100%', ease: 'none' }, 0)
 
-        gsap.to('[data-sub-float]', {
-          y: MOTION.floatDistance,
-          rotation: -2,
-          duration: MOTION.floatCycle,
-          ease: MOTION.easeInOut,
-          repeat: -1,
-          yoyo: true,
-        })
-        gsap.to(propeller, {
-          scaleY: 0.25,
-          transformOrigin: '50% 50%',
-          duration: 0.12,
-          ease: 'none',
-          repeat: -1,
-          yoyo: true,
+        gsap.utils.toArray<HTMLElement>('[data-sub-bubble]').forEach((bubble) => {
+          gsap.fromTo(
+            bubble,
+            { x: 0, y: 0, scale: 0.4 },
+            {
+              keyframes: { opacity: [0, 0.8, 0] },
+              x: 'random(-14, 10)',
+              y: 'random(-150, -90)',
+              scale: 'random(0.9, 1.4)',
+              duration: 'random(1.8, 2.8)',
+              ease: 'sine.out',
+              repeat: -1,
+              repeatRefresh: true,
+              repeatDelay: gsap.utils.random(1.5, 6),
+              delay: gsap.utils.random(0, 5),
+            },
+          )
         })
         return stopListening
       })
@@ -110,6 +118,12 @@ export function DiveGuide() {
                 ))}
               </div>
               <Submarine className="relative block h-auto w-full" />
+              <div data-headlight-glow className="absolute inset-0 opacity-0">
+                {lensAnchors.map((anchor) => (
+                  <GlowHalo key={`${anchor.x}-${anchor.y}`} anchor={anchor} part="beam" color="cyan" spread={3} />
+                ))}
+              </div>
+              <SubBubbles />
             </div>
           </div>
         </div>

@@ -3,7 +3,6 @@ import { Hero } from '@/components/sections/Hero'
 import { TrenchFloor } from '@/components/sections/TrenchFloor'
 import { ZoneSection } from '@/components/sections/ZoneSection'
 import { DiveGuide } from '@/components/ui/DiveGuide'
-import { GlowFilters } from '@/components/ui/GlowFilters'
 import { InstrumentPanel } from '@/components/ui/InstrumentPanel'
 import { ParticleField } from '@/components/ui/ParticleField'
 import { zones } from '@/data/zones'
@@ -18,7 +17,6 @@ export default function App() {
 
   return (
     <>
-      <GlowFilters />
       <ParticleField />
       <DiveGuide />
       <InstrumentPanel />

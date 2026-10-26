@@ -6,13 +6,16 @@ import { GodRays } from '@/components/ui/GodRays'
 import { SeagullFlock } from '@/components/ui/SeagullFlock'
 import { WaveLine } from '@/components/ui/WaveLine'
 import { hero } from '@/data/hero'
-import { sceneryMotion } from '@/data/motion-presets'
+import { creatureMotion, sceneryMotion } from '@/data/motion-presets'
 import { sunLabel } from '@/data/sky'
 import { useAmbientMotion, type AmbientTarget } from '@/hooks/useAmbientMotion'
 import { gsap, SplitText, useGSAP } from '@/lib/gsap'
 import { MEDIA, MOTION } from '@/lib/motion'
 
-const skyTargets: AmbientTarget[] = [{ selector: '[data-sun-art]', preset: sceneryMotion.sun, seed: 11 }]
+const skyTargets: AmbientTarget[] = [
+  { selector: '[data-sun-art]', preset: sceneryMotion.sun, seed: 11 },
+  { selector: '[data-ship-bob]', preset: creatureMotion['research-ship'], seed: 5 },
+]
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -42,14 +45,6 @@ export function Hero() {
         intro.from('[data-hero-ship]', { autoAlpha: 0, y: distance, duration: MOTION.slow * 0.75 }, 0.2)
         intro.from('[data-hero-hint]', { autoAlpha: 0, duration: MOTION.fast }, 1.2)
 
-        gsap.to('[data-ship-bob]', {
-          y: MOTION.floatDistance / 2,
-          rotation: 1.6,
-          duration: MOTION.floatCycle / 2,
-          ease: MOTION.easeInOut,
-          repeat: -1,
-          yoyo: true,
-        })
         gsap.to('[data-wave="front"]', { xPercent: -50, duration: MOTION.floatCycle * 2.5, ease: 'none', repeat: -1 })
         gsap.to('[data-wave="back"]', { xPercent: -50, duration: MOTION.floatCycle * 4, ease: 'none', repeat: -1 })
         gsap.to('[data-hero-hint-arrow]', { y: 8, duration: MOTION.fast, ease: MOTION.easeInOut, repeat: -1, yoyo: true })

@@ -1,6 +1,4 @@
-import { creatureTraits } from '@/data/creatures'
 import { gsap } from '@/lib/gsap'
-import { glowFilterUrl } from '@/lib/glow'
 import { MOTION } from '@/lib/motion'
 import type { CreaturePlacement, SwimDirection } from '@/types/ocean'
 
@@ -15,17 +13,6 @@ const swimTravel: Record<SwimDirection, number> = {
 
 export function findActors(scope: HTMLElement, placement: CreaturePlacement): Actors {
   return Array.from(scope.querySelectorAll<HTMLElement>(`[data-actor="${placement.id}"]`))
-}
-
-function findParts(actors: Actors, part: string): SVGElement[] {
-  return actors.flatMap((actor) => Array.from(actor.querySelectorAll<SVGElement>(`[data-part="${part}"]`)))
-}
-
-export function applyGlowFilters(actors: Actors, placement: CreaturePlacement): void {
-  const { glow } = creatureTraits[placement.kind]
-  const parts = glow ? findParts(actors, glow.part) : []
-  if (!glow || !parts.length) return
-  gsap.set(parts, { attr: { filter: glowFilterUrl(glow.color) } })
 }
 
 export function animateDrift(section: HTMLElement, actors: Actors, placement: CreaturePlacement, scale: number): void {

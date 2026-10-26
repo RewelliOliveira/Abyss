@@ -11,6 +11,25 @@ function settersFor(elements: Element[], property: string, unit?: string): Sette
   return (value) => setters.forEach((set) => set(value))
 }
 
+const HALO_LOOKUP_INTERVAL = 0.5
+
+function opacityTargets(scope: Element, shapes: Element[], part: string) {
+  let setter = settersFor(shapes, 'opacity')
+  let haloCount = 0
+  let lastLookup = -Infinity
+  return (time: number, value: number) => {
+    if (haloCount === 0 && time - lastLookup > HALO_LOOKUP_INTERVAL) {
+      lastLookup = time
+      const halos = Array.from(scope.querySelectorAll(`[data-halo="${part}"]`))
+      if (halos.length) {
+        haloCount = halos.length
+        setter = settersFor([...shapes, ...halos], 'opacity')
+      }
+    }
+    setter(value)
+  }
+}
+
 const BLINK_LENGTH = 0.18
 const BLINK_DEPTH = 0.75
 
@@ -30,8 +49,8 @@ function blinkLevel(random: () => number, preset: PartPreset) {
 
 export function createPartAgent(scope: Element, preset: PartPreset, seed: number): AmbientAgent | null {
   const shapes = Array.from(scope.querySelectorAll(`[data-part="${preset.part}"]`))
-  const halos = Array.from(scope.querySelectorAll(`[data-halo="${preset.part}"]`))
-  if (!shapes.length && !halos.length) return null
+  const glows = preset.motion === 'blink' || preset.motion === 'flicker'
+  if (!shapes.length && !glows) return null
   const random = createRandom(seed)
   const cycle = pickInRange(random, preset.cycle)
   const phase = random() * Math.PI * 2 - (preset.lag ?? 0)
@@ -68,12 +87,12 @@ export function createPartAgent(scope: Element, preset: PartPreset, seed: number
       }
     }
     case 'blink': {
-      const setOpacity = settersFor([...shapes, ...halos], 'opacity')
+      const setOpacity = opacityTargets(scope, shapes, preset.part)
       const level = blinkLevel(random, preset)
       return {
         update(time) {
           const glow = 1 - preset.amount * (0.5 + shimmer(time * 0.8) * 0.5)
-          setOpacity(glow * level(time))
+          setOpacity(time, glow * level(time))
         },
       }
     }
@@ -96,10 +115,10 @@ export function createPartAgent(scope: Element, preset: PartPreset, seed: number
       }
     }
     case 'flicker': {
-      const setOpacity = settersFor([...shapes, ...halos], 'opacity')
+      const setOpacity = opacityTargets(scope, shapes, preset.part)
       return {
         update(time) {
-          setOpacity(1 - preset.amount * (0.5 + shimmer(time * 3) * 0.5))
+          setOpacity(time, 1 - preset.amount * (0.5 + shimmer(time * 3) * 0.5))
         },
       }
     }
