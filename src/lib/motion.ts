@@ -11,11 +11,15 @@ export const MOTION = {
   floatCycle: 5.5,
   floatDistance: 14,
   swimDistance: 18,
+  parallaxDepth: 160,
+  riseBoost: 1.6,
+  plumeCycle: 6,
   scrub: 1.2,
   smooth: 1.4,
   returnDuration: 2.6,
   glowCycle: 1.8,
   headlightSwitch: 0.9,
+  lanternFollow: 0.12,
   mobileDistanceScale: 0.5,
 } as const
 

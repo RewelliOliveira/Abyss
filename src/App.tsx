@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { Hero } from '@/components/sections/Hero'
 import { ZoneSection } from '@/components/sections/ZoneSection'
+import { GlowFilters } from '@/components/ui/GlowFilters'
 import { zones } from '@/data/zones'
 import { useSmoothScroller } from '@/hooks/useSmoothScroller'
 
@@ -10,7 +11,9 @@ export default function App() {
   useSmoothScroller(wrapperRef, contentRef)
 
   return (
-    <div ref={wrapperRef} id="smooth-wrapper" className="relative z-10">
+    <>
+      <GlowFilters />
+      <div ref={wrapperRef} id="smooth-wrapper" className="relative z-10">
       <div ref={contentRef} id="smooth-content">
         <main id="main">
           <Hero />
@@ -19,6 +22,7 @@ export default function App() {
           ))}
         </main>
       </div>
-    </div>
+      </div>
+    </>
   )
 }

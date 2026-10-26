@@ -16,16 +16,16 @@ export const zones: Zone[] = [
     dark: false,
     backgroundClass: 'bg-linear-to-b from-ocean-surface to-ocean-sunlight',
     creatures: [
-      { id: 'turtle', kind: 'sea-turtle', label: 'A green sea turtle gliding through bright water', top: 50, left: 4, width: 'clamp(11rem, 30vw, 26rem)', parallax: 0.6, swim: 'right' },
-      { id: 'school-1', kind: 'fish', label: 'A school of silver fish', top: 20, left: 56, width: 'clamp(4rem, 9vw, 8rem)', parallax: 1.2, swim: 'left' },
-      { id: 'school-2', kind: 'fish', top: 26, left: 70, width: 'clamp(3.5rem, 8vw, 7rem)', parallax: 1.1, swim: 'left' },
-      { id: 'school-3', kind: 'fish', top: 14, left: 76, width: 'clamp(3rem, 7vw, 6rem)', parallax: 1.3, swim: 'left' },
-      { id: 'school-4', kind: 'fish', top: 32, left: 60, width: 'clamp(3rem, 7vw, 6rem)', parallax: 1.15, swim: 'left' },
-      { id: 'school-5', kind: 'fish', top: 21, left: 86, width: 'clamp(3.5rem, 8vw, 7rem)', parallax: 1.25, swim: 'left' },
-      { id: 'school-6', kind: 'fish', top: 36, left: 80, width: 'clamp(3rem, 6vw, 5.5rem)', parallax: 1.05, swim: 'left', desktopOnly: true },
-      { id: 'school-7', kind: 'fish', top: 11, left: 64, width: 'clamp(3rem, 6vw, 5.5rem)', parallax: 1.35, swim: 'left', desktopOnly: true },
-      { id: 'school-8', kind: 'fish', top: 29, left: 92, width: 'clamp(3rem, 6vw, 5.5rem)', parallax: 1.2, swim: 'left', desktopOnly: true },
-      { id: 'school-9', kind: 'fish', top: 40, left: 70, width: 'clamp(2.5rem, 5vw, 5rem)', parallax: 1.1, swim: 'left', desktopOnly: true },
+      { id: 'turtle', kind: 'sea-turtle', label: 'A green sea turtle gliding through bright water', top: 60, left: 6, width: 'clamp(11rem, 30vw, 26rem)', parallax: 0.6, swim: 'right' },
+      { id: 'school-1', kind: 'fish', label: 'A school of silver fish', top: 52, left: 56, width: 'clamp(4rem, 9vw, 8rem)', parallax: 1.2, swim: 'left' },
+      { id: 'school-2', kind: 'fish', top: 58, left: 70, width: 'clamp(3.5rem, 8vw, 7rem)', parallax: 1.1, swim: 'left' },
+      { id: 'school-3', kind: 'fish', top: 48, left: 78, width: 'clamp(3rem, 7vw, 6rem)', parallax: 1.3, swim: 'left' },
+      { id: 'school-4', kind: 'fish', top: 64, left: 60, width: 'clamp(3rem, 7vw, 6rem)', parallax: 1.15, swim: 'left' },
+      { id: 'school-5', kind: 'fish', top: 55, left: 86, width: 'clamp(3.5rem, 8vw, 7rem)', parallax: 1.25, swim: 'left' },
+      { id: 'school-6', kind: 'fish', top: 68, left: 80, width: 'clamp(3rem, 6vw, 5.5rem)', parallax: 1.05, swim: 'left', desktopOnly: true },
+      { id: 'school-7', kind: 'fish', top: 46, left: 64, width: 'clamp(3rem, 6vw, 5.5rem)', parallax: 1.35, swim: 'left', desktopOnly: true },
+      { id: 'school-8', kind: 'fish', top: 62, left: 92, width: 'clamp(3rem, 6vw, 5.5rem)', parallax: 1.2, swim: 'left', desktopOnly: true },
+      { id: 'school-9', kind: 'fish', top: 72, left: 70, width: 'clamp(2.5rem, 5vw, 5rem)', parallax: 1.1, swim: 'left', desktopOnly: true },
     ],
   },
   {
@@ -43,9 +43,9 @@ export const zones: Zone[] = [
     dark: false,
     backgroundClass: 'bg-linear-to-b from-ocean-sunlight to-ocean-twilight',
     creatures: [
-      { id: 'jellyfish', kind: 'jellyfish', label: 'A pink jellyfish trailing long tentacles', top: 10, left: 60, width: 'clamp(8rem, 20vw, 17rem)', parallax: 0.7, swim: 'up' },
-      { id: 'squid', kind: 'squid', label: 'A red squid jetting through the water', top: 46, left: 4, width: 'clamp(10rem, 26vw, 22rem)', parallax: 1.1, swim: 'left' },
-      { id: 'vampire-squid', kind: 'vampire-squid', label: 'A vampire squid with webbed arms and glowing red eyes', top: 68, left: 50, width: 'clamp(9rem, 22vw, 19rem)', parallax: 0.85, swim: 'still' },
+      { id: 'jellyfish', kind: 'jellyfish', label: 'A pink jellyfish trailing long tentacles', top: 54, left: 64, width: 'clamp(8rem, 20vw, 17rem)', parallax: 0.7, swim: 'up' },
+      { id: 'squid', kind: 'squid', label: 'A red squid jetting through the water', top: 64, left: 8, width: 'clamp(10rem, 26vw, 22rem)', parallax: 1.1, swim: 'left' },
+      { id: 'vampire-squid', kind: 'vampire-squid', label: 'A vampire squid with webbed arms and glowing red eyes', top: 76, left: 44, width: 'clamp(9rem, 22vw, 19rem)', parallax: 0.85, swim: 'still' },
     ],
   },
   {
@@ -63,8 +63,8 @@ export const zones: Zone[] = [
     dark: true,
     backgroundClass: 'bg-linear-to-b from-ocean-twilight to-ocean-midnight',
     creatures: [
-      { id: 'anglerfish', kind: 'anglerfish', label: 'An anglerfish with a glowing lure and needle-like teeth', top: 24, left: 48, width: 'clamp(10rem, 26vw, 22rem)', parallax: 0.75, swim: 'left' },
-      { id: 'gulper-eel', kind: 'gulper-eel', label: 'A gulper eel with a huge open mouth and a glowing tail tip', top: 62, left: 8, width: 'clamp(11rem, 30vw, 26rem)', parallax: 1.05, swim: 'right' },
+      { id: 'anglerfish', kind: 'anglerfish', label: 'An anglerfish with a glowing lure and needle-like teeth', top: 50, left: 54, width: 'clamp(10rem, 26vw, 22rem)', parallax: 0.75, swim: 'left' },
+      { id: 'gulper-eel', kind: 'gulper-eel', label: 'A gulper eel with a huge open mouth and a glowing tail tip', top: 72, left: 4, width: 'clamp(11rem, 30vw, 26rem)', parallax: 1.05, swim: 'right' },
     ],
   },
   {
@@ -82,8 +82,8 @@ export const zones: Zone[] = [
     dark: true,
     backgroundClass: 'bg-linear-to-b from-ocean-midnight to-ocean-abyssal',
     creatures: [
-      { id: 'vent', kind: 'hydrothermal-vent', label: 'A hydrothermal vent chimney releasing dark smoke, ringed by tube worms', top: 20, left: 56, width: 'clamp(9rem, 22vw, 19rem)', parallax: 0.5, swim: 'still' },
-      { id: 'isopod', kind: 'giant-isopod', label: 'A giant isopod crawling across the seafloor', top: 68, left: 6, width: 'clamp(10rem, 26vw, 22rem)', parallax: 0.8, swim: 'right' },
+      { id: 'vent', kind: 'hydrothermal-vent', label: 'A hydrothermal vent chimney releasing dark smoke, ringed by tube worms', top: 50, left: 60, width: 'clamp(9rem, 22vw, 19rem)', parallax: 0.5, swim: 'still' },
+      { id: 'isopod', kind: 'giant-isopod', label: 'A giant isopod crawling across the seafloor', top: 80, left: 6, width: 'clamp(10rem, 26vw, 22rem)', parallax: 0.8, swim: 'right' },
     ],
   },
   {
@@ -101,7 +101,7 @@ export const zones: Zone[] = [
     dark: true,
     backgroundClass: 'bg-linear-to-b from-ocean-abyssal to-ocean-hadal',
     creatures: [
-      { id: 'snailfish', kind: 'snailfish', label: 'A pale pink hadal snailfish', top: 44, left: 44, width: 'clamp(10rem, 28vw, 24rem)', parallax: 0.7, swim: 'left' },
+      { id: 'snailfish', kind: 'snailfish', label: 'A pale pink hadal snailfish', top: 62, left: 26, width: 'clamp(10rem, 28vw, 24rem)', parallax: 0.7, swim: 'left' },
     ],
   },
 ]
