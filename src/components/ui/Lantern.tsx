@@ -18,6 +18,7 @@ export function Lantern({ fadeIn }: LanternProps) {
       if (!root || !beam) return
       const media = gsap.matchMedia()
       media.add(MEDIA.motionOk, () => {
+        gsap.set(beam, { xPercent: -50, yPercent: -50 })
         const setX = gsap.quickSetter(beam, 'x', 'px')
         const setY = gsap.quickSetter(beam, 'y', 'px')
 
@@ -68,7 +69,7 @@ export function Lantern({ fadeIn }: LanternProps) {
     >
       <div
         ref={beamRef}
-        className="absolute left-0 top-0 size-[400vmax] -translate-1/2 bg-[radial-gradient(circle,transparent_0,transparent_var(--spacing-lantern),var(--color-darkness)_var(--spacing-lantern-edge))]"
+        className="absolute left-0 top-0 size-[400vmax] bg-[radial-gradient(circle,transparent_0,transparent_var(--spacing-lantern),var(--color-darkness)_var(--spacing-lantern-edge))]"
       />
     </div>
   )
