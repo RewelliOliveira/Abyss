@@ -57,7 +57,7 @@ export function CreaturePopover({ id, profile, anchorRef, open }: CreaturePopove
         popover.hidePopover()
       }
     },
-    { scope: popoverRef, dependencies: [open] },
+    { scope: popoverRef, dependencies: [open], revertOnUpdate: true },
   )
 
   return (

@@ -50,9 +50,8 @@ export function CreatureActor({ placement, layer }: CreatureActorProps) {
       <div data-ambient={placement.id}>
         <div
           data-turn
-          tabIndex={profile ? (placement.label ? 0 : -1) : undefined}
           aria-describedby={profile ? popoverId : undefined}
-          className={profile ? 'cursor-help rounded-panel [&_svg_*]:pointer-events-auto' : undefined}
+          className={profile ? '[&_svg_*]:pointer-events-auto' : undefined}
           {...(profile ? handlers : {})}
         >
           <div ref={measureGlow} className={`relative ${mirror}`}>
