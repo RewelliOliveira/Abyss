@@ -16,7 +16,6 @@ export const zones: Zone[] = [
     dark: false,
     backgroundClass: 'bg-linear-to-b from-ocean-surface to-ocean-sunlight',
     creatures: [
-      { id: 'dolphin', kind: 'dolphin', label: 'A bottlenose dolphin leaping through the water', top: 8, left: 16, width: 'clamp(9rem, 24vw, 21rem)', parallax: 0.9, swim: 'right' },
       { id: 'turtle', kind: 'sea-turtle', label: 'A green sea turtle gliding through bright water', top: 38, left: 20, width: 'clamp(9rem, 24vw, 21rem)', parallax: 0.6, swim: 'right' },
       { id: 'school-1', kind: 'fish', label: 'A school of silver fish', top: 52, left: 58, width: 'clamp(3.5rem, 7.5vw, 6.5rem)', parallax: 1.2, swim: 'left' },
       { id: 'school-2', kind: 'fish', top: 57, left: 70, width: 'clamp(3rem, 6.5vw, 5.5rem)', parallax: 1.1, swim: 'left' },

@@ -26,9 +26,6 @@ export const creatureMotion: Record<CreatureKind, AmbientPreset> = {
     body: { kind: 'school', x: 24, y: 14, rotation: 4, speed: 0.16, turnEvery: [7, 12], turnLag: 0.11, turnTravel: 60 },
     parts: [{ part: 'tail', motion: 'wag', amount: 16, cycle: [0.45, 0.6], origin: '100% 50%' }],
   },
-  dolphin: {
-    body: { kind: 'wander', x: 20, y: 18, rotation: 6, speed: 0.13, lean: 0.7 },
-  },
   'manta-ray': {
     body: { kind: 'wander', x: 18, y: 12, rotation: 4, speed: 0.08, lean: 0.4 },
   },

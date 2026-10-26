@@ -5,7 +5,6 @@ export type CreatureKind =
   | 'submarine'
   | 'sea-turtle'
   | 'fish'
-  | 'dolphin'
   | 'manta-ray'
   | 'hammerhead-shark'
   | 'jellyfish'

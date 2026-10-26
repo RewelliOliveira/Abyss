@@ -2,7 +2,6 @@ import { ResearchShip } from '@/components/creatures/ResearchShip'
 import { Submarine } from '@/components/creatures/Submarine'
 import { SeaTurtle } from '@/components/creatures/SeaTurtle'
 import { Fish } from '@/components/creatures/Fish'
-import { Dolphin } from '@/components/creatures/Dolphin'
 import { MantaRay } from '@/components/creatures/MantaRay'
 import { HammerheadShark } from '@/components/creatures/HammerheadShark'
 import { Jellyfish } from '@/components/creatures/Jellyfish'
@@ -24,7 +23,6 @@ export const creatureArt: Record<CreatureKind, ComponentType<CreatureArtProps>> 
   submarine: Submarine,
   'sea-turtle': SeaTurtle,
   fish: Fish,
-  dolphin: Dolphin,
   'manta-ray': MantaRay,
   'hammerhead-shark': HammerheadShark,
   jellyfish: Jellyfish,

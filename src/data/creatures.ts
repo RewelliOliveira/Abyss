@@ -5,7 +5,6 @@ export const creatureTraits: Record<CreatureKind, CreatureTraits> = {
   submarine: { facing: 'right', glow: { part: 'headlights', color: 'cyan' } },
   'sea-turtle': { facing: 'right' },
   fish: { facing: 'right' },
-  dolphin: { facing: 'right' },
   'manta-ray': { facing: 'right' },
   'hammerhead-shark': { facing: 'right' },
   jellyfish: { facing: 'front', sway: 'tentacles' },
