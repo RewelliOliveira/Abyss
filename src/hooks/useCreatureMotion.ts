@@ -1,5 +1,5 @@
 import type { RefObject } from 'react'
-import { animateDrift, animateFloat, animateParts, applyGlowFilters, findActors } from '@/lib/creature-motion'
+import { animateDrift, applyGlowFilters, findActors } from '@/lib/creature-motion'
 import { gsap, useGSAP } from '@/lib/gsap'
 import { MEDIA, MOTION } from '@/lib/motion'
 import type { CreaturePlacement } from '@/types/ocean'
@@ -16,12 +16,10 @@ export function useCreatureMotion(sectionRef: RefObject<HTMLElement | null>, cre
         const { motionOk, mobile } = context.conditions ?? {}
         if (!motionOk) return
         const scale = mobile ? MOTION.mobileDistanceScale : 1
-        creatures.forEach((placement, index) => {
+        creatures.forEach((placement) => {
           const actors = findActors(section, placement)
           if (!actors.length) return
           animateDrift(section, actors, placement, scale)
-          animateFloat(actors, index)
-          animateParts(actors, placement)
         })
       })
       return () => media.revert()

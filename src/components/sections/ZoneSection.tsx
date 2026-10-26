@@ -1,10 +1,12 @@
-import { useRef } from 'react'
+import { useMemo, useRef } from 'react'
 import { CreatureLayer } from '@/components/ui/CreatureLayer'
 import { Lantern } from '@/components/ui/Lantern'
 import { ZonePanel } from '@/components/ui/ZonePanel'
+import { useAmbientMotion } from '@/hooks/useAmbientMotion'
 import { useCreatureMotion } from '@/hooks/useCreatureMotion'
 import { useZoneDepth } from '@/hooks/useZoneDepth'
 import { creatureTraits } from '@/data/creatures'
+import { ambientTargetsFor } from '@/lib/creature-ambient'
 import type { Zone } from '@/types/ocean'
 
 interface ZoneSectionProps {
@@ -16,6 +18,8 @@ export function ZoneSection({ zone }: ZoneSectionProps) {
   const headingId = `${zone.id}-title`
   useZoneDepth(sectionRef, zone.depth)
   useCreatureMotion(sectionRef, zone.creatures)
+  const ambientTargets = useMemo(() => ambientTargetsFor(zone.creatures, zone.depth.from + 1), [zone])
+  useAmbientMotion(sectionRef, ambientTargets)
   const glowingCreatures = zone.creatures.filter((placement) => creatureTraits[placement.kind].glow)
 
   return (

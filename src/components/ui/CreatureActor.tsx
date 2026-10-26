@@ -26,9 +26,11 @@ export function CreatureActor({ placement, layer }: CreatureActorProps) {
       className={`absolute ${visibility}`}
       style={{ top: `${placement.top}%`, left: `${placement.left}%`, width: placement.width }}
     >
-      <div data-float>
-        <div className={`relative ${mirror}`}>
-          <Art label={layer === 'body' ? placement.label : undefined} className="block h-auto w-full" />
+      <div data-ambient={placement.id}>
+        <div data-turn>
+          <div className={`relative ${mirror}`}>
+            <Art label={layer === 'body' ? placement.label : undefined} className="block h-auto w-full" />
+          </div>
         </div>
       </div>
     </div>
