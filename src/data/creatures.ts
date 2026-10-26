@@ -13,7 +13,6 @@ export const creatureTraits: Record<CreatureKind, CreatureTraits> = {
   lanternfish: { facing: 'right' },
   hatchetfish: { facing: 'right' },
   'sperm-whale': { facing: 'right' },
-  grenadier: { facing: 'right' },
   viperfish: { facing: 'right', glow: { part: 'photophores', color: 'cyan', scattered: true } },
   anglerfish: { facing: 'right', glow: { part: 'lure', color: 'cyan' } },
   'gulper-eel': { facing: 'right', glow: { part: 'tail-tip', color: 'pink' } },
@@ -97,13 +96,6 @@ export const creatureProfiles: Partial<Record<CreatureKind, CreatureProfile>> = 
     maxLength: 20,
     depth: { from: 0, to: 2250 },
     fact: 'It holds its breath for over an hour to hunt squid in the dark, finding them with the loudest clicks of any animal.',
-  },
-  grenadier: {
-    name: 'Roundnose Grenadier',
-    scientificName: 'Coryphaenoides rupestris',
-    maxLength: 1.1,
-    depth: { from: 180, to: 2600 },
-    fact: 'Also called a rattail, it uses huge eyes to catch faint flashes of light and can live for more than 50 years.',
   },
   viperfish: {
     name: "Sloane's Viperfish",

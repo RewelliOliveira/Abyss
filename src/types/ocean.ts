@@ -13,7 +13,6 @@ export type CreatureKind =
   | 'lanternfish'
   | 'hatchetfish'
   | 'sperm-whale'
-  | 'grenadier'
   | 'viperfish'
   | 'anglerfish'
   | 'gulper-eel'

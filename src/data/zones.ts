@@ -70,7 +70,6 @@ export const zones: Zone[] = [
     backgroundClass: 'bg-linear-to-b from-ocean-twilight to-ocean-midnight',
     creatures: [
       { id: 'sperm-whale', kind: 'sperm-whale', label: 'A sperm whale diving with its huge, square head first', top: 10, left: 4, width: 'clamp(16rem, 44vw, 38rem)', parallax: 0.6, swim: 'right' },
-      { id: 'grenadier', kind: 'grenadier', label: 'A big-eyed grenadier with a long, tapering rattail', top: 34, left: 18, width: 'clamp(9rem, 24vw, 20rem)', parallax: 0.9, swim: 'left' },
       { id: 'anglerfish', kind: 'anglerfish', label: 'An anglerfish with a glowing lure and needle-like teeth', top: 50, left: 54, width: 'clamp(10rem, 26vw, 22rem)', parallax: 0.75, swim: 'left' },
       { id: 'gulper-eel', kind: 'gulper-eel', label: 'A gulper eel with a huge open mouth and a glowing tail tip', top: 72, left: 4, width: 'clamp(11rem, 30vw, 26rem)', parallax: 1.05, swim: 'right' },
       { id: 'viperfish', kind: 'viperfish', label: 'A viperfish with long fangs and glowing dots along its belly', top: 86, left: 52, width: 'clamp(10rem, 26vw, 22rem)', parallax: 0.95, swim: 'left' },

@@ -52,9 +52,6 @@ export const creatureMotion: Record<CreatureKind, AmbientPreset> = {
   'sperm-whale': {
     body: { kind: 'wander', x: 18, y: 8, rotation: 1.5, speed: 0.05, lean: 0.3 },
   },
-  grenadier: {
-    body: { kind: 'wander', x: 12, y: 8, rotation: 2, speed: 0.08, lean: 0.4 },
-  },
   viperfish: {
     body: { kind: 'wander', x: 14, y: 8, rotation: 3, speed: 0.1, lean: 0.5 },
   },
