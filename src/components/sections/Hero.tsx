@@ -42,7 +42,7 @@ export function Hero() {
         })
         intro.from('[data-hero-subtitle]', { autoAlpha: 0, y: distance / 2 }, 0.6)
         intro.from('[data-hero-cta]', { autoAlpha: 0, scale: 0.9, ease: MOTION.easePop, duration: MOTION.fast }, 0.8)
-        intro.from('[data-hero-ship]', { autoAlpha: 0, y: distance, duration: MOTION.slow * 0.75 }, 0.2)
+        intro.from('[data-hero-ship-arrival]', { autoAlpha: 0, y: distance, duration: MOTION.slow * 0.75 }, 0.2)
         intro.from('[data-hero-hint]', { autoAlpha: 0, duration: MOTION.fast }, 1.2)
 
         gsap.to('[data-wave="front"]', { xPercent: -50, duration: MOTION.floatCycle * 2.5, ease: 'none', repeat: -1 })
@@ -81,12 +81,13 @@ export function Hero() {
       <div data-waterline aria-hidden="true" className="absolute inset-x-0 bottom-0 top-[64%] z-15 bg-ocean-surface" />
       <GodRays fadeTargetId="sunlight" className="top-[64%] z-15 h-[calc(36%+110svh)]" />
 
-      <div
-        data-hero-ship
-        className="absolute left-1/2 top-[64%] z-10 w-[min(78vw,30rem)] -translate-x-1/2 -translate-y-[88%] md:left-auto md:right-[6%] md:w-[min(42vw,36rem)] md:translate-x-0"
-      >
-        <div data-ship-bob className="origin-bottom">
-          <ResearchShip label={hero.shipLabel} className="h-auto w-full" />
+      <div className="absolute left-1/2 top-[64%] z-10 w-[min(78vw,30rem)] -translate-x-1/2 -translate-y-[88%] md:left-auto md:right-[6%] md:w-[min(42vw,36rem)] md:translate-x-0">
+        <div data-hero-ship>
+          <div data-hero-ship-arrival>
+            <div data-ship-bob className="origin-bottom">
+              <ResearchShip label={hero.shipLabel} className="h-auto w-full" />
+            </div>
+          </div>
         </div>
       </div>
 
