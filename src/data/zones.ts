@@ -38,14 +38,12 @@ export const zones: Zone[] = [
     facts: [
       'Every night, trillions of animals rise from this zone to feed near the surface, then sink again at dawn: the largest migration on Earth.',
       'In 17 years of deep-sea video off California, 76% of the animals observed in the water column could produce light.',
-      'The vampire squid lives where oxygen is scarce. When threatened, it can release a cloud of glowing mucus from its arm tips.',
     ],
     dark: false,
     backgroundClass: 'bg-linear-to-b from-ocean-sunlight to-ocean-twilight',
     creatures: [
-      { id: 'jellyfish', kind: 'jellyfish', label: 'A pink jellyfish trailing long tentacles', top: 54, left: 64, width: 'clamp(8rem, 20vw, 17rem)', parallax: 0.7, swim: 'up' },
-      { id: 'squid', kind: 'squid', label: 'A red squid jetting through the water', top: 64, left: 8, width: 'clamp(10rem, 26vw, 22rem)', parallax: 1.1, swim: 'left' },
-      { id: 'vampire-squid', kind: 'vampire-squid', label: 'A vampire squid with webbed arms and glowing red eyes', top: 76, left: 44, width: 'clamp(9rem, 22vw, 19rem)', parallax: 0.85, swim: 'still' },
+      { id: 'jellyfish', kind: 'jellyfish', label: 'A pink jellyfish trailing long tentacles', top: 50, left: 58, width: 'clamp(8rem, 20vw, 17rem)', parallax: 0.7, swim: 'up' },
+      { id: 'squid', kind: 'squid', label: 'A red squid jetting through the water', top: 72, left: 10, width: 'clamp(10rem, 26vw, 22rem)', parallax: 1.1, swim: 'left' },
     ],
   },
   {

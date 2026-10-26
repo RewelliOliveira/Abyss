@@ -7,7 +7,6 @@ export type CreatureKind =
   | 'fish'
   | 'jellyfish'
   | 'squid'
-  | 'vampire-squid'
   | 'anglerfish'
   | 'gulper-eel'
   | 'giant-isopod'

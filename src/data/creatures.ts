@@ -7,7 +7,6 @@ export const creatureTraits: Record<CreatureKind, CreatureTraits> = {
   fish: { facing: 'right' },
   jellyfish: { facing: 'front', sway: 'tentacles' },
   squid: { facing: 'left' },
-  'vampire-squid': { facing: 'front', glow: { part: 'eyes', color: 'pink' } },
   anglerfish: { facing: 'right', glow: { part: 'lure', color: 'cyan' } },
   'gulper-eel': { facing: 'right', glow: { part: 'tail-tip', color: 'pink' } },
   'giant-isopod': { facing: 'right' },

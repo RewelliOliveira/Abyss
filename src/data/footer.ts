@@ -17,7 +17,6 @@ export const sources: Source[] = [
   { label: 'Ocean zones', publisher: 'Woods Hole Oceanographic Institution', url: 'https://www.whoi.edu/know-your-ocean/ocean-topics/how-the-ocean-works/ocean-zones/' },
   { label: 'Greatest migration on Earth happens under darkness every day', publisher: 'WHOI Ocean Twilight Zone', url: 'https://twilightzone.whoi.edu/greatest-migration-on-earth-happens-under-darkness-every-day' },
   { label: 'Pervasiveness of bioluminescence in the deep sea (Martini & Haddock, 2017)', publisher: 'Scientific Reports / MBARI', url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC5379559/' },
-  { label: 'Vampire squid', publisher: 'Animal Diversity Web', url: 'https://animaldiversity.org/accounts/Vampyroteuthis_infernalis' },
   { label: 'Pelican eel, Eurypharynx pelecanoides', publisher: 'Fishes of Australia', url: 'https://fishesofaustralia.net.au/home/species/3300' },
   { label: 'Black smokers and hydrothermal vents', publisher: 'NOAA Ocean Exploration', url: 'https://oceanexplorer.noaa.gov/?p=16069' },
   { label: 'Behold the deepest fish ever filmed', publisher: 'Smithsonian Magazine', url: 'https://www.smithsonianmag.com/smart-news/behold-the-deepest-fish-ever-filmed-180981937/' },

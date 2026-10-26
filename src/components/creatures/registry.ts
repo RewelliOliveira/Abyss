@@ -4,7 +4,6 @@ import { SeaTurtle } from '@/components/creatures/SeaTurtle'
 import { Fish } from '@/components/creatures/Fish'
 import { Jellyfish } from '@/components/creatures/Jellyfish'
 import { Squid } from '@/components/creatures/Squid'
-import { VampireSquid } from '@/components/creatures/VampireSquid'
 import { Anglerfish } from '@/components/creatures/Anglerfish'
 import { GulperEel } from '@/components/creatures/GulperEel'
 import { GiantIsopod } from '@/components/creatures/GiantIsopod'
@@ -22,7 +21,6 @@ export const creatureArt: Record<CreatureKind, ComponentType<CreatureArtProps>> 
   fish: Fish,
   jellyfish: Jellyfish,
   squid: Squid,
-  'vampire-squid': VampireSquid,
   anglerfish: Anglerfish,
   'gulper-eel': GulperEel,
   'giant-isopod': GiantIsopod,
