@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { Hero } from '@/components/sections/Hero'
 import { ZoneSection } from '@/components/sections/ZoneSection'
 import { zones } from '@/data/zones'
 import { useSmoothScroller } from '@/hooks/useSmoothScroller'
@@ -12,6 +13,7 @@ export default function App() {
     <div ref={wrapperRef} id="smooth-wrapper" className="relative z-10">
       <div ref={contentRef} id="smooth-content">
         <main id="main">
+          <Hero />
           {zones.map((zone) => (
             <ZoneSection key={zone.id} zone={zone} />
           ))}
