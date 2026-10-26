@@ -235,15 +235,24 @@ function crawl(target: AgentTarget, preset: CrawlPreset): AmbientAgent {
   const random = createRandom(target.seed)
   const setX = setterFor(target.element, 'x', 'px')
   const setY = setterFor(target.element, 'y', 'px')
+  const setFacing = preset.turns ? setterFor(target.element, 'scaleX') : null
   let position = 0
   let direction = target.heading
+  let facing: Segment = createSegment(1, 1, 0, 0, easeInOut)
   let move: Segment | null = null
   let restUntil = random() * preset.pause[1]
   return {
     update(time) {
       if (!move && time >= restUntil) {
         const limit = preset.range * target.scale
-        if (Math.abs(position) > limit) direction = position > 0 ? -1 : 1
+        if (Math.abs(position) > limit) {
+          const nextDirection = position > 0 ? -1 : 1
+          if (nextDirection !== direction) {
+            const current = segmentValue(facing, time)
+            facing = createSegment(current, nextDirection * target.heading, time, 0.8, easeInOut)
+          }
+          direction = nextDirection
+        }
         const step = pickInRange(random, preset.step) * target.scale * direction
         const duration = pickInRange(random, preset.stepDuration)
         move = createSegment(position, position + step, time, duration, preset.sideways ? easeOut : easeInOut)
@@ -260,6 +269,7 @@ function crawl(target: AgentTarget, preset: CrawlPreset): AmbientAgent {
       }
       setX(position)
       setY(lift)
+      setFacing?.(segmentValue(facing, time))
     },
   }
 }

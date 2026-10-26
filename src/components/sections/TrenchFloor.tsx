@@ -3,14 +3,17 @@ import { Seafloor } from '@/components/creatures/Seafloor'
 import { ActionButton } from '@/components/ui/ActionButton'
 import { Lantern } from '@/components/ui/Lantern'
 import { CHALLENGER_DEEP_DEPTH, trench } from '@/data/trench'
+import { useAmbientMotion } from '@/hooks/useAmbientMotion'
 import { formatInteger } from '@/lib/format'
 import { gsap, SplitText, useGSAP } from '@/lib/gsap'
 import { MEDIA, MOTION } from '@/lib/motion'
 import { metersToFeet } from '@/lib/ocean-physics'
+import { seafloorTargets } from '@/lib/seafloor-ambient'
 
 export function TrenchFloor() {
   const sectionRef = useRef<HTMLElement>(null)
   const headingId = `${trench.id}-title`
+  useAmbientMotion(sectionRef, seafloorTargets)
 
   useGSAP(
     () => {
@@ -49,14 +52,17 @@ export function TrenchFloor() {
       aria-labelledby={headingId}
       className="relative isolate flex min-h-svh flex-col justify-center overflow-clip bg-ocean-hadal"
     >
-      <div data-seafloor className="pointer-events-none absolute inset-x-0 bottom-0 z-0">
+      <div
+        data-seafloor
+        className="pointer-events-none absolute bottom-0 left-1/2 z-0 w-[max(100%,56rem)] -translate-x-1/2"
+      >
         <Seafloor label={trench.seafloorLabel} className="block h-auto w-full" />
       </div>
       <div className="absolute inset-0 z-10">
         <Lantern fadeIn={false} />
       </div>
 
-      <div className="relative z-30 mx-auto flex max-w-content flex-col items-center px-gutter pb-[24svh] pt-section text-center">
+      <div className="relative z-30 mx-auto flex max-w-content flex-col items-center px-gutter pb-[max(24svh,38vw)] pt-section text-center">
         <p data-trench-eyebrow className="font-mono text-label uppercase tracking-widest text-glow-cyan">
           {trench.eyebrow}
         </p>

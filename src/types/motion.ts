@@ -51,6 +51,7 @@ export interface CrawlPreset {
   bob: number
   range: number
   sideways?: boolean
+  turns?: boolean
 }
 
 export interface SwayPreset {
@@ -88,6 +89,7 @@ export interface PartPreset {
 }
 
 export interface AmbientPreset {
+  origin?: string
   body?: BodyPreset
   parts?: PartPreset[]
 }

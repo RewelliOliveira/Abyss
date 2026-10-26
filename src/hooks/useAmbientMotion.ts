@@ -33,6 +33,7 @@ function buildAgents(scope: Element, targets: AmbientTarget[], scale: number, mo
     const { body, parts = [] } = target.preset
     for (const element of Array.from(scope.querySelectorAll(target.selector))) {
       const seed = seedFor(element, target.seed)
+      if (target.preset.origin) gsap.set(element, { transformOrigin: target.preset.origin })
       if (body) {
         let leader: SchoolLeader | null = null
         if (body.kind === 'school' && target.group) {

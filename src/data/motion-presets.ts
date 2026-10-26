@@ -45,7 +45,7 @@ export const creatureMotion: Record<CreatureKind, AmbientPreset> = {
     ],
   },
   'giant-isopod': {
-    body: { kind: 'crawl', step: [18, 34], stepDuration: [1.4, 2.2], pause: [0.8, 2.4], bob: 2, range: 60 },
+    body: { kind: 'crawl', step: [18, 34], stepDuration: [1.4, 2.2], pause: [0.8, 2.4], bob: 2, range: 60, turns: true },
   },
   snailfish: {
     body: { kind: 'wander', x: 16, y: 10, rotation: 3, speed: 0.08, lean: 0.5 },
@@ -63,13 +63,16 @@ export const sceneryMotion: Record<SceneryKind, AmbientPreset> = {
       { part: 'ring-inner', motion: 'breathe', amount: 0.03, cycle: [3.4, 4], origin: '50% 50%' },
     ],
   },
-  'sea-lily': { body: { kind: 'sway', rotation: [2.5, 5], cycle: [4, 7] } },
-  'sea-pen': { body: { kind: 'sway', rotation: [2, 4], cycle: [3.5, 6] } },
-  sponge: { body: { kind: 'sway', rotation: [0.8, 1.6], cycle: [5, 8] } },
-  anemone: { body: { kind: 'sway', rotation: [1.5, 3], cycle: [3, 5] } },
-  'sea-whip': { body: { kind: 'sway', rotation: [3, 6], cycle: [3, 5] } },
-  'sea-pig': { body: { kind: 'crawl', step: [6, 12], stepDuration: [2.5, 4], pause: [2, 5], bob: 1, range: 18 } },
-  'brittle-star': { body: { kind: 'twitch', rotation: [6, 18], scale: [0.94, 1.06], interval: [2.5, 6] } },
+  'sea-lily': { origin: '50% 100%', body: { kind: 'sway', rotation: [2.5, 5], cycle: [4, 7] } },
+  'sea-pen': { origin: '50% 100%', body: { kind: 'sway', rotation: [2, 4], cycle: [3.5, 6] } },
+  sponge: { origin: '50% 100%', body: { kind: 'sway', rotation: [0.8, 1.6], cycle: [5, 8] } },
+  anemone: { origin: '50% 100%', body: { kind: 'sway', rotation: [1.5, 3], cycle: [3, 5] } },
+  'sea-whip': { origin: '50% 100%', body: { kind: 'sway', rotation: [3, 6], cycle: [3, 5] } },
+  'sea-pig': {
+    origin: '50% 50%',
+    body: { kind: 'crawl', step: [6, 12], stepDuration: [2.5, 4], pause: [2, 5], bob: 1, range: 18, turns: true },
+  },
+  'brittle-star': { origin: '50% 50%', body: { kind: 'twitch', rotation: [6, 18], scale: [0.94, 1.06], interval: [2.5, 6] } },
   crab: {
     body: { kind: 'crawl', step: [4, 9], stepDuration: [0.35, 0.55], pause: [0.6, 2.5], bob: 1.5, range: 14, sideways: true },
   },
