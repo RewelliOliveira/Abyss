@@ -16,6 +16,6 @@ export function formatDepthRange(from: number, to: number): string {
 export function formatLightPercent(percent: number): string {
   if (percent >= 10) return `${formatInteger(percent)}%`
   if (percent >= 0.1) return `${formatDecimal(percent)}%`
-  if (percent >= 0.000001) return '<0.1%'
+  if (percent > 0) return '<0.1%'
   return '0%'
 }
