@@ -1,68 +1,70 @@
 # Abyss
 
-> Scroll from sunlit waves to the Challenger Deep, 10,935 m down.
+> Role das ondas iluminadas pelo sol até o Challenger Deep, a 10.935 m de profundidade.
 
-**Abyss** is an interactive, scroll-driven landing page that takes you on a dive from the ocean surface to the bottom of the Mariana Trench. Scrolling *is* the dive: the depth gauge, the light, the colors and the creatures all change as you go down. It is an educational showcase, with no sales pitch and no forms.
+**Abyss** é uma landing page interativa guiada pelo scroll que leva você num mergulho da superfície do oceano até o fundo da Fossa das Marianas. Rolar a página *é* o mergulho: o medidor de profundidade, a luz, as cores e as criaturas mudam conforme você desce. É uma vitrine educativa, sem venda e sem formulários.
 
-Built with React, TypeScript, Tailwind CSS and GSAP.
+Feito com React, TypeScript, Tailwind CSS e GSAP.
 
----
-
-## Table of contents
-
-- [Highlights](#highlights)
-- [The dive](#the-dive)
-- [Tech stack](#tech-stack)
-- [Getting started](#getting-started)
-- [Scripts](#scripts)
-- [Project structure](#project-structure)
-- [How it works](#how-it-works)
-- [Customization](#customization)
-- [Accessibility](#accessibility)
-- [Contributing](#contributing)
+> O site em si é em inglês (en-US).
 
 ---
 
-## Highlights
+## Sumário
 
-- **Five ocean zones**, each with its own color gradient, facts and creatures.
-- **20+ hand-traced SVG illustrations**: sea life, a research ship, a submarine, seagulls and a detailed seafloor.
-- **Live instrument panel** showing depth (m / ft), temperature (°C / °F) and pressure as you scroll.
-- **Lantern effect** in the dark zones: the darkness has a light hole that follows your pointer, finger or the screen center.
-- **Bioluminescence**: lures, tail tips and photophores keep glowing above the darkness.
-- **Creature profiles**: hover or focus a creature to learn more about it.
-- **Smooth scrolling** with GSAP ScrollSmoother and creatures that swim in as the dive reaches them.
-- **Responsive** layout with a dedicated creature stage on mobile, and full `prefers-reduced-motion` support.
+- [Destaques](#destaques)
+- [O mergulho](#o-mergulho)
+- [Stack](#stack)
+- [Como rodar](#como-rodar)
+- [Scripts disponíveis](#scripts-disponíveis)
+- [Estrutura de pastas](#estrutura-de-pastas)
+- [Como funciona](#como-funciona)
+- [Personalização](#personalização)
+- [Acessibilidade](#acessibilidade)
+- [Contribuindo](#contribuindo)
 
-## The dive
+---
 
-| Zone | Depth | Some of the creatures |
+## Destaques
+
+- **Cinco zonas oceânicas**, cada uma com seu próprio gradiente de cor, curiosidades e criaturas.
+- **Mais de 20 ilustrações em SVG vetorizadas à mão**: vida marinha, um navio de pesquisa, um submarino, gaivotas e um fundo do mar detalhado.
+- **Painel de instrumentos ao vivo** com profundidade (m / ft), temperatura (°C / °F) e pressão conforme você rola.
+- **Efeito de lanterna** nas zonas escuras: a escuridão tem um foco de luz que segue o cursor, o dedo ou o centro da tela.
+- **Bioluminescência**: iscas, pontas de cauda e fotóforos continuam brilhando acima da escuridão.
+- **Fichas das criaturas**: passe o mouse ou dê foco numa criatura para saber mais sobre ela.
+- **Scroll suave** com GSAP ScrollSmoother e criaturas que entram nadando quando o mergulho chega até elas.
+- **Responsivo**, com um palco próprio para as criaturas no celular e suporte completo a `prefers-reduced-motion`.
+
+## O mergulho
+
+| Zona | Profundidade | Algumas criaturas |
 | --- | --- | --- |
-| Sunlight Zone | 0 – 200 m | Green sea turtle, Atlantic herring, giant manta ray, great hammerhead, mauve stinger |
-| Twilight Zone | 200 – 1,000 m | Humboldt squid, swordfish, lanternfish, silver hatchetfish, sperm whale |
-| Midnight Zone | 1,000 – 4,000 m | Humpback anglerfish, gulper eel, vampire squid, Atolla jellyfish |
-| Abyssal Zone | 4,000 – 6,000 m | Tripod fish, bigfin squid, deep-sea red shrimp |
-| Hadal Zone | 6,000 – 10,935 m | Deep-sea anemone, Mariana snailfish |
+| Zona Eufótica (Sunlight Zone) | 0 – 200 m | Tartaruga-verde, arenque-do-atlântico, raia-manta-gigante, tubarão-martelo-gigante, água-viva-luminosa |
+| Zona Mesopelágica (Twilight Zone) | 200 – 1.000 m | Lula-de-humboldt, peixe-espada, peixe-lanterna, peixe-machado-prateado, cachalote |
+| Zona Batipelágica (Midnight Zone) | 1.000 – 4.000 m | Peixe-diabo, enguia-pelicano, lula-vampira, água-viva-coroa |
+| Zona Abissal (Abyssal Zone) | 4.000 – 6.000 m | Peixe-tripé, lula-de-nadadeiras-grandes, camarão-vermelho de profundidade |
+| Zona Hadal (Hadal Zone) | 6.000 – 10.935 m | Anêmona de profundidade, peixe-caracol-das-marianas |
 
-The journey ends at the **Challenger Deep**, the deepest known point on Earth.
+A jornada termina no **Challenger Deep**, o ponto mais profundo conhecido da Terra.
 
-## Tech stack
+## Stack
 
-| Technology | Purpose |
+| Tecnologia | Uso |
 | --- | --- |
-| [React 19](https://react.dev) | UI |
-| [TypeScript](https://www.typescriptlang.org) | Type safety |
-| [Vite](https://vite.dev) | Dev server and bundler |
-| [Tailwind CSS v4](https://tailwindcss.com) | Styling, with theme tokens in `src/styles/theme.css` |
+| [React 19](https://react.dev) | Interface |
+| [TypeScript](https://www.typescriptlang.org) | Tipagem |
+| [Vite](https://vite.dev) | Dev server e build |
+| [Tailwind CSS v4](https://tailwindcss.com) | Estilos, com tokens de tema em `src/styles/theme.css` |
 | [GSAP 3](https://gsap.com) + `@gsap/react` | ScrollTrigger, ScrollSmoother, ScrollToPlugin, SplitText, DrawSVGPlugin |
-| [vite-plugin-svgr](https://github.com/pd4d10/vite-plugin-svgr) | Import SVGs as React components (`?react`) |
-| [SVGO](https://github.com/svg/svgo) | SVG optimization |
+| [vite-plugin-svgr](https://github.com/pd4d10/vite-plugin-svgr) | Importa SVGs como componentes React (`?react`) |
+| [SVGO](https://github.com/svg/svgo) | Otimização dos SVGs |
 
-Fonts: **Space Grotesk** (titles), **Inter** (body) and **JetBrains Mono** (instrument readouts), loaded from Google Fonts.
+Fontes: **Space Grotesk** (títulos), **Inter** (texto) e **JetBrains Mono** (números dos instrumentos), via Google Fonts.
 
-## Getting started
+## Como rodar
 
-**Requirements:** Node.js 20+ and npm.
+**Pré-requisitos:** Node.js 20+ e npm.
 
 ```bash
 git clone https://github.com/RewelliOliveira/Abyss.git
@@ -71,80 +73,80 @@ npm install
 npm run dev
 ```
 
-Then open `http://localhost:5173`.
+A página abre em `http://localhost:5173`.
 
-## Scripts
+## Scripts disponíveis
 
-| Command | Description |
+| Comando | O que faz |
 | --- | --- |
-| `npm run dev` | Start the development server |
-| `npm run build` | Type check (`tsc -b`) and build for production into `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm run lint` | Run ESLint |
+| `npm run dev` | Inicia o servidor de desenvolvimento |
+| `npm run build` | Checa os tipos (`tsc -b`) e gera o build de produção em `dist/` |
+| `npm run preview` | Serve o build de produção localmente |
+| `npm run lint` | Roda o ESLint |
 
-## Project structure
+## Estrutura de pastas
 
 ```
 Abyss/
-├── public/                 # favicon and logo
+├── public/                 # favicon e logo
 ├── src/
-│   ├── assets/             # original illustrations (never modified)
-│   │   └── svg/            # traced and optimized SVGs
+│   ├── assets/             # ilustrações originais (nunca alteradas)
+│   │   └── svg/            # SVGs vetorizados e otimizados
 │   ├── components/
 │   │   ├── sections/       # Hero, ZoneSection, TrenchFloor
-│   │   ├── ui/             # instrument panel, lantern, particles, popover, sky...
-│   │   └── creatures/      # one component per creature or illustration
-│   ├── data/               # typed content: zones, creatures, facts, sky, motion presets
-│   ├── hooks/              # depth, reveal, lantern tracking, smooth scroller...
-│   ├── lib/                # GSAP setup, motion config, dive store, ambient motion
-│   ├── styles/             # theme tokens
-│   ├── types/              # shared TypeScript types
+│   │   ├── ui/             # painel de instrumentos, lanterna, partículas, ficha, céu...
+│   │   └── creatures/      # um componente por criatura ou ilustração
+│   ├── data/               # conteúdo tipado: zonas, criaturas, curiosidades, céu, presets de movimento
+│   ├── hooks/              # profundidade, revelação, lanterna, scroll suave...
+│   ├── lib/                # configuração do GSAP, movimento, estado do mergulho, animação ambiente
+│   ├── styles/             # tokens de tema
+│   ├── types/              # tipos TypeScript compartilhados
 │   ├── App.tsx
 │   └── main.tsx
 ├── index.html
 └── vite.config.ts
 ```
 
-## How it works
+## Como funciona
 
-**Depth from scroll.** `src/lib/dive-store.ts` holds the current depth. Each `ZoneSection` maps its scroll progress to its own depth range (`useZoneDepth`), and the instruments, headlights and particles subscribe to that value.
+**Profundidade a partir do scroll.** `src/lib/dive-store.ts` guarda a profundidade atual. Cada `ZoneSection` converte o progresso do scroll na sua faixa de profundidade (`useZoneDepth`), e os instrumentos, faróis e partículas reagem a esse valor.
 
-**Continuous background.** Every zone paints a vertical gradient from its color to the next zone's color, so the ocean darkens smoothly as you scroll.
+**Fundo contínuo.** Cada zona pinta um gradiente vertical da sua cor até a cor da próxima zona, então o oceano escurece suavemente conforme você rola.
 
-**Fixed layers.** Outside the smooth-scroll wrapper sit the `ParticleField` (canvas), the `DiveGuide` (the submarine) and the `InstrumentPanel`.
+**Camadas fixas.** Fora do wrapper de scroll suave ficam o `ParticleField` (canvas), o `DiveGuide` (o submarino) e o `InstrumentPanel`.
 
-**Darkness and glow.** Dark zones render a `Lantern` (a darkness layer with a radial light hole) plus a second creature layer above it that shows only the bioluminescent parts and their pre-drawn halos. Glow is never an animated SVG filter: halos are radial gradients animated only in opacity, which keeps it fast.
+**Escuridão e brilho.** As zonas escuras renderizam uma `Lantern` (uma camada de escuridão com um foco de luz radial) e uma segunda camada de criaturas por cima, que mostra só as partes bioluminescentes e seus halos pré-desenhados. O brilho nunca é um filtro SVG animado: os halos são gradientes radiais animados só na opacidade, o que mantém tudo leve.
 
-**Creature reveals.** Underwater art is static. Creatures only enter as the dive reaches them: sliding in from the left or right, or rising from below.
+**Entrada das criaturas.** A arte subaquática é estática. As criaturas só aparecem quando o mergulho chega até elas: deslizando pela esquerda ou pela direita, ou subindo de baixo.
 
-**Living sky.** Only the surface scene animates its SVGs: the sun, god rays, waves, the research ship and a flock of seagulls that swap poses in flight. These ambient agents use seeded noise, run on a single `gsap.ticker` per scene and pause when off-screen.
+**Céu animado.** Só a cena da superfície anima seus SVGs: o sol, os raios de luz, as ondas, o navio de pesquisa e um bando de gaivotas que trocam de pose em voo. Esses agentes usam ruído com semente, rodam num único `gsap.ticker` por cena e pausam fora da tela.
 
-**Code splitting.** Illustrations are split into separate chunks (`seafloor`, `sea-life`, `illustrations`, `vendor`) in `vite.config.ts`.
+**Divisão do bundle.** As ilustrações são separadas em chunks próprios (`seafloor`, `sea-life`, `illustrations`, `vendor`) em `vite.config.ts`.
 
-## Customization
+## Personalização
 
-| What | Where |
+| O quê | Onde |
 | --- | --- |
-| Colors, fonts, spacing | `src/styles/theme.css` |
-| Font links | `index.html` |
-| Motion timings and breakpoints | `src/lib/motion.ts` (`MOTION`, `MEDIA`) |
-| Zones, creatures and facts | `src/data/zones.ts`, `src/data/creatures.ts` |
-| Sky and seagulls | `src/data/sky.ts`, `src/lib/flight.ts` |
-| Ambient motion presets | `src/data/motion-presets.ts` |
+| Cores, fontes, espaçamentos | `src/styles/theme.css` |
+| Links das fontes | `index.html` |
+| Tempos de animação e breakpoints | `src/lib/motion.ts` (`MOTION`, `MEDIA`) |
+| Zonas, criaturas e curiosidades | `src/data/zones.ts`, `src/data/creatures.ts` |
+| Céu e gaivotas | `src/data/sky.ts`, `src/lib/flight.ts` |
+| Presets de animação ambiente | `src/data/motion-presets.ts` |
 
-## Accessibility
+## Acessibilidade
 
-- Semantic HTML, alt text on every illustration, keyboard navigation and visible focus.
-- `prefers-reduced-motion` turns off parallax, particles and the lantern, while the depth gradient and instruments keep working.
-- Units are shown in metric with imperial alongside (meters / feet, °C / °F).
+- HTML semântico, texto alternativo em todas as ilustrações, navegação por teclado e foco visível.
+- `prefers-reduced-motion` desliga parallax, partículas e a lanterna, mas o gradiente de profundidade e os instrumentos continuam funcionando.
+- Unidades no sistema métrico com o imperial ao lado (metros / pés, °C / °F).
 
-## Contributing
+## Contribuindo
 
-Commits follow [Conventional Commits](https://www.conventionalcommits.org) in English:
+Os commits seguem o [Conventional Commits](https://www.conventionalcommits.org) em inglês:
 
 ```
 feat(hero): add surface scene with animated title
 fix(lantern): follow touch position on mobile
 ```
 
-Run `npm run build` before committing to make sure the type check and the build pass.
+Rode `npm run build` antes de commitar para garantir que a checagem de tipos e o build passam.
